@@ -5,12 +5,15 @@ Client::Client(){}
 
 Client::Client(const Client& copy){(void)copy;}
 
-Client::Client(const std::string& nn, const std::string& un, const std::string& hn, const std::string& hu):
-nickName(nn),
-userName(un),
-hostName(hn),
-hostUser(hu)
-{}
+Client::Client(const std::string& nn, const std::string& un, const std::string& hn, const std::string& hu)
+{
+    if (nn.empty() || Utils::isAllWhitespace(nn))
+        throw IllegalArgumentException("Empty nickName");
+    this->nickName = nn;
+    this->userName = un;
+    this->hostName = hn;
+    this->hostUser = hu;
+}
 
 
 Client& Client::operator=(const Client& other)
