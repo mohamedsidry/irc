@@ -14,10 +14,10 @@ RESET = \033[0m
 
 # SOURCES
 BUILD_DIR = build.test
-HPP =	include/main.hpp include/test.hpp
+HPP =	include/main.hpp include/test.hpp include/Client.hpp
 
 
-MAIN =	tests/main.cpp
+MAIN =	tests/main.cpp srcs/server/models/Client.cpp
 
 SRCS = $(MAIN)
 
