@@ -53,5 +53,9 @@ run : $(NAME)
 
 re : fclean all
 
+runtest : $(NAME)
+	@make -f Makefile.test --no-print-directory
+	@make -f Makefile.test run --no-print-directory
+	@make -f Makefile.test fclean --no-print-directory
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re runtest
