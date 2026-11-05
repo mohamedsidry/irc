@@ -1,0 +1,7 @@
+*.o
+test
+*.env
+*.txt
+*.excalidraw
+config
+a.out
