@@ -17,7 +17,7 @@ Client::Client(const std::string& nn, const std::string& un, const std::string& 
     if (nn.empty() || Utils::isAllWhitespace(nn))
         throw IllegalArgumentException("Empty nickname");
     if (nn.size() > Client::NICKNAME_MAX_SIZE)
-        throw IllegalArgumentException("Too Long nickname");
+        throw IllegalArgumentException("Too Long nickname " + nn);
     this->nickName = nn;
     this->userName = un;
     this->hostName = hn;
