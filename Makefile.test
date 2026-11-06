@@ -14,12 +14,21 @@ RESET = \033[0m
 
 # SOURCES
 BUILD_DIR = build.test
-HPP =	include/main.hpp include/test.hpp include/Client.hpp
+HPP =	include/main.hpp \
+		include/test.hpp \
+		include/Utils.hpp \
+		include/Client.hpp \
+		include/Exception.hpp \
+		include/IllegalArgumentException.hpp \
+		include/Tester.hpp
 
 
-MAIN =	tests/main.cpp srcs/server/models/Client.cpp
+MAIN =	tests/main.cpp 
 
-SRCS = $(MAIN)
+SRCS =	$(MAIN) \
+		tests/Tester.cpp \
+		srcs/helpers/Utils.cpp \
+		srcs/server/models/Client.cpp
 
 OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 
