@@ -38,19 +38,16 @@ ClientRepository::~ClientRepository(){}
 
 bool ClientRepository::hasClient(const std::string& nickname) const
 {
-    for (std::list<Client>::const_iterator it = clients.begin(); it != clients.end(); it++)
-        if (nickname == it->getNickName())
-            return true;
-    return false;
+    return clients.find(nickname) != clients.end();
 }
 
 
 const Client& ClientRepository::getClient(const std::string& nickname) const
 {
-    for (std::list<Client>::const_iterator it = clients.begin(); it != clients.end(); it++)
-        if (nickname == it->getNickName())
-            return *it;
-    throw IllegalArgumentException("No client known by " + nickname + " here");
+    std::map<std::string, Client>::const_iterator  client = clients.find(nickname);
+    if (client == clients.end())
+        throw IllegalArgumentException("No client known by " + nickname + " here");
+    return client->second;
 }
 
 
@@ -58,23 +55,19 @@ void ClientRepository::addClient(const Client& client)
 {
     if (hasClient(client.getNickName()))
         throw IllegalArgumentException(client.getNickName() + " already used try an other nickname");
-    this->clients.push_back(Client(client));
+    this->clients.insert(std::pair<std::string, Client>(client.getNickName(), client));
 }
 
 
 void ClientRepository::removeClient(const std::string& nickname)
 {
-    for (std::list<Client>::iterator it = clients.begin(); it != clients.end(); it++)
-    {
-        if (nickname == it->getNickName())
-        {
-            clients.remove(*it);
-            return;
-        }
-    }
+
+    std::map<std::string, Client>::const_iterator  client = clients.find(nickname);
+    if (client != clients.end())
+        clients.erase(client->first);
 }
 
-const std::list<Client>& ClientRepository::getAllClient(void) const
+const std::map<std::string, Client>& ClientRepository::getAllClient(void) const
 {
     return this->clients;
 }

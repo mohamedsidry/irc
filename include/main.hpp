@@ -5,6 +5,8 @@
 #include <stdlib.h> // exit_failure && exit_success
 #include <vector>
 #include <list>
+#include <map>
+#include <utility>
 #include <string>
 #include <exception>
 #include <algorithm> // iterator operations

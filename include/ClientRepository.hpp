@@ -7,7 +7,8 @@
 class ClientRepository : public ISearchableClient, public IClientManagment
 {
     private:
-        std::list<Client> clients;
+        //std::list<Client> clients;
+        std::map<std::string, Client> clients;
     public:
 
         ClientRepository();
@@ -19,6 +20,6 @@ class ClientRepository : public ISearchableClient, public IClientManagment
         const Client& getClient(const std::string& nickname) const;
         void addClient(const Client& client);
         void removeClient(const std::string& nickname);
-        const std::list<Client>& getAllClient(void) const;
+        const std::map<std::string, Client>& getAllClient(void) const;
 };
 
