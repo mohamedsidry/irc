@@ -14,6 +14,6 @@
 #include "IllegalArgumentException.hpp"
 #include "Client.hpp"
 #include "ClientRepository.hpp"
-
+#include "ClientService.hpp"
 #endif // MAIN_HPP
 
