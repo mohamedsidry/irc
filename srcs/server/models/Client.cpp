@@ -4,7 +4,13 @@ size_t Client::NICKNAME_MAX_SIZE = 9;
 
 Client::Client(){}
 
-Client::Client(const Client& copy){(void)copy;}
+Client::Client(const Client& copy):
+nickName(copy.nickName),
+userName(copy.userName),
+hostName(copy.hostName),
+hostUser(copy.hostUser)
+{
+}
 
 Client::Client(const std::string& nn, const std::string& un, const std::string& hn, const std::string& hu)
 {

@@ -23,11 +23,10 @@ class Client
         std::string userName;
         std::string hostName;
         std::string hostUser;
-        Client(const Client& copy);
         Client();
     public:
         static size_t NICKNAME_MAX_SIZE;
-        
+        Client(const Client& copy);
         Client(const std::string& nn, const std::string& un, const std::string& hn, const std::string& hu);
         Client& operator=(const Client& other);
         ~Client();
