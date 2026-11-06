@@ -26,6 +26,8 @@ class Client
         Client(const Client& copy);
         Client();
     public:
+        static size_t NICKNAME_MAX_SIZE;
+        
         Client(const std::string& nn, const std::string& un, const std::string& hn, const std::string& hu);
         Client& operator=(const Client& other);
         ~Client();

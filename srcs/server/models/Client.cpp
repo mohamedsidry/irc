@@ -1,5 +1,6 @@
 #include "../../../include/Client.hpp"
 
+size_t Client::NICKNAME_MAX_SIZE = 9;
 
 Client::Client(){}
 
@@ -8,7 +9,9 @@ Client::Client(const Client& copy){(void)copy;}
 Client::Client(const std::string& nn, const std::string& un, const std::string& hn, const std::string& hu)
 {
     if (nn.empty() || Utils::isAllWhitespace(nn))
-        throw IllegalArgumentException("Empty nickName");
+        throw IllegalArgumentException("Empty nickname");
+    if (nn.size() > Client::NICKNAME_MAX_SIZE)
+        throw IllegalArgumentException("Too Long nickname");
     this->nickName = nn;
     this->userName = un;
     this->hostName = hn;
