@@ -21,8 +21,8 @@ void Tester::TClientRepo::test(const std::string& title)
     try
     {
         ClientRepository repository;
-        Client client1( "Adam-AK47", "adambrands", "localhost", "debian-13");
-        Client client2( "Bob-1337", "bobmarlin", "localhost", "debian-12");
+        Client client1("Adam-AK47", "adambrands", "localhost", "debian-13");
+        Client client2("Bob-1337", "bobmarlin", "localhost", "debian-12");
         std::cout << "Number of clients : " << repository.getAllClient().size() << std::endl;
         repository.addClient(client1);
         std::cout << "Number of clients after adding 1st client : " << repository.getAllClient().size() << std::endl;
@@ -67,5 +67,43 @@ void Tester::TClientRepo::test(const std::string& title)
     {
         std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl; 
     }
+}
+
+
+
+void Tester::TClientService::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+    ClientRepository repository;
+    ClientService service(repository);
+
+    try{service.addClient("Adam-AK1", "adambrands", "localhost", "debian-13");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    try{service.addClient("Adam-AK1", "adambrands", "localhost", "debian-13");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.addClient("Adam-AK10", "adambrands", "localhost", "debian-13");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.addClient("Adam-AK100", "adambrands", "localhost", "debian-13");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.removeClient("Adam-AK1");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.removeClient("Adam-AK10");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.addClient("Adam-AK1", "adambrands", "localhost", "debian-13");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.findClient("Adam-AK99");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.addClient("Adam-AK99", "adambrands", "localhost", "debian-13");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    try{service.findClient("Adam-AK99");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
 }
 

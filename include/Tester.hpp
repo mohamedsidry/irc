@@ -26,6 +26,17 @@ class Tester
             public:
                 static void test(const std::string& title);
         };
+        class TClientService
+        {
+            private:
+                TClientService();
+                TClientService(const TClientService&);
+                TClientService& operator=(const TClientService&);
+                ~TClientService();
+            
+            public:
+                static void test(const std::string& title);
+        };
 };
 
 
