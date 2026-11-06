@@ -10,5 +10,6 @@ int main(int argc, char *argv[])
     Tester::TClient::test("Empty Nickname", "", "adambrands", "localhost", "debian-13");
     Tester::TClient::test("Space Nickname", "\t  \n", "adambrands", "localhost", "debian-13");
     Tester::TClient::test("Long Nickname", "Adam-AK474747", "adambrands", "localhost", "debian-13");
+    Tester::TClientRepo::test("ClientRepository");
     return (EXIT_SUCCESS);
 }

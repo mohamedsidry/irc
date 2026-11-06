@@ -20,7 +20,10 @@ HPP =	include/main.hpp \
 		include/Client.hpp \
 		include/Exception.hpp \
 		include/IllegalArgumentException.hpp \
-		include/Tester.hpp
+		include/Tester.hpp \
+		include/ClientRepository.hpp \
+        include/IClientManagment.hpp \
+        include/ISearchableClient.hpp
 
 
 MAIN =	tests/main.cpp 
@@ -28,7 +31,8 @@ MAIN =	tests/main.cpp
 SRCS =	$(MAIN) \
 		tests/Tester.cpp \
 		srcs/helpers/Utils.cpp \
-		srcs/server/models/Client.cpp
+		srcs/server/models/Client.cpp \
+		srcs/server/repositories/ClientRepository.cpp
 
 OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 
