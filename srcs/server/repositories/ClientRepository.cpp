@@ -2,16 +2,11 @@
 
 
 
-ClientRepository::ClientRepository():
-ISearchableClient(),
-IClientManagment()
-{}
+ClientRepository::ClientRepository(){}
 
 
 
 ClientRepository::ClientRepository(const ClientRepository& copy):
-ISearchableClient(),
-IClientManagment(),
 clients(copy.clients)
 {}
 
@@ -22,11 +17,7 @@ clients(copy.clients)
 ClientRepository& ClientRepository::operator=(const ClientRepository& other)
 {
     if (this != &other)
-    {
-        IClientManagment::operator=(other);
-        ISearchableClient::operator=(other);
         this->clients = other.clients;
-    }
     return *this;
 }
 
@@ -53,18 +44,22 @@ const Client& ClientRepository::getClient(const std::string& nickname) const
 
 void ClientRepository::addClient(const Client& client)
 {
-    if (hasClient(client.getNickName()))
-        throw IllegalArgumentException(client.getNickName() + " already used try an other nickname");
-    this->clients.insert(std::pair<std::string, Client>(client.getNickName(), client));
+    std::pair<std::map<std::string, Client>::iterator, bool> result;
+
+    result = clients.insert(
+        std::make_pair(client.getNickName(), client)
+    );
+
+    if (result.second == false)
+        throw IllegalArgumentException(
+            client.getNickName() + " already used"
+        );
 }
 
 
 void ClientRepository::removeClient(const std::string& nickname)
 {
-
-    std::map<std::string, Client>::const_iterator  client = clients.find(nickname);
-    if (client != clients.end())
-        clients.erase(client->first);
+    clients.erase(nickname);
 }
 
 const std::map<std::string, Client>& ClientRepository::getAllClient(void) const
