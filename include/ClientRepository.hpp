@@ -7,7 +7,6 @@
 class ClientRepository : public ISearchableClient, public IClientManagment
 {
     private:
-        //std::list<Client> clients;
         std::map<std::string, Client> clients;
     public:
 
