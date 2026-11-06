@@ -9,13 +9,11 @@ class ClientService
 {
     private:
         ClientRepository& repository;    
-        ClientService();
+        ClientService(const ClientService& copy); // delete
+        ClientService& operator=(const ClientService& other); // delete
     public:
         ClientService(ClientRepository& repository);
-        ClientService(const ClientService& copy);
-        ClientService& operator=(const ClientService& other);
         ~ClientService();
-
         const Client& findClient(const std::string& nickname) const;
         void addClient(const std::string& nickname, const std::string& username, const std::string& hostname, const std::string& hostuser);
         void removeClient(const std::string& nickname);

@@ -10,19 +10,6 @@ repository(repo)
 {}
 
 
-ClientService::ClientService(const ClientService& copy):
-repository(copy.repository)
-{}
-
-
-
-ClientService& ClientService::operator=(const ClientService& other)
-{
-    if (this != &other)
-        this->repository = other.repository;
-    return *this;
-}
-
 
 
 ClientService::~ClientService(){}
