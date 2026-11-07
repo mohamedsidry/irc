@@ -1,6 +1,8 @@
 #pragma once
 
-#include "main.hpp"
+#include <string>
+#include "IllegalArgumentException.hpp"
+#include "Utils.hpp"
 
 class ChannelMode
 {

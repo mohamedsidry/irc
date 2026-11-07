@@ -1,9 +1,9 @@
 #pragma once
 
-#include "main.hpp"
+#include <string>
 
-
-class ClientRepository;
+class Client; // Forward declaration
+class ClientRepository; // Forward declaration
 
 class ClientService
 {

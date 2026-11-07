@@ -1,7 +1,7 @@
 #pragma once
 
-#include "main.hpp"
-
+#include <stdexcept>
+#include <string>
 
 
 class Exception : public std::runtime_error

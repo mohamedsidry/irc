@@ -1,6 +1,6 @@
 #pragma once
 
-#include "main.hpp"
+#include <string>
 
 class Client; // Forward declaration
 

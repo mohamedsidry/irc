@@ -1,9 +1,9 @@
-#include "../../../include/ClientService.hpp"
+#include "ClientService.hpp"
+#include "ClientRepository.hpp"
+#include "Client.hpp"
+#include "IllegalArgumentException.hpp"
 
-
-
-
-
+#include <iostream>
 
 ClientService::ClientService(ClientRepository& repo):
 repository(repo)
@@ -19,7 +19,7 @@ ClientService::~ClientService(){}
 
 const Client& ClientService::findClient(const std::string& nickname) const
 {
-    return this->repository.getClient(nickname);
+    return repository.getClient(nickname);
 }
 
 
@@ -30,15 +30,16 @@ void ClientService::addClient(const std::string& nickname, const std::string& us
     try
     {
         client = new Client(nickname, username, hostname, hostuser);
-        this->repository.addClient(client);
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
+        repository.addClient(client);
     }
     catch (const IllegalArgumentException& e)
     {
         std::cerr << e.what() << std::endl;
+        delete client;
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
         delete client;
     }
 }

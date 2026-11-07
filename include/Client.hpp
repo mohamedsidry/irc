@@ -1,6 +1,11 @@
 #pragma once
 
-#include "main.hpp"
+#include <string>
+#include <cstddef>
+#include <iostream>
+
+#include "Utils.hpp"
+#include "IllegalArgumentException.hpp"
 
 /**
  * @brief Represents a client

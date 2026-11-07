@@ -49,6 +49,17 @@ class Tester
             public:
                 static void test(const std::string& title);
         };
+        class TChannel
+        {
+            private:
+                TChannel();
+                TChannel(const TChannel&);
+                TChannel& operator=(const TChannel&);
+                ~TChannel();
+            
+            public:
+                static void test(const std::string& title);
+        };
 };
 
 

@@ -2,7 +2,7 @@
 #define MAIN_HPP
 
 #include <iostream>
-#include <stdlib.h> // exit_failure && exit_success
+#include <cstdlib>
 #include <vector>
 #include <list>
 #include <map>
@@ -18,6 +18,7 @@
 #include "ClientRepository.hpp"
 #include "ClientService.hpp"
 #include "ChannelMode.hpp"
+#include "Channel.hpp"
 
-#endif // MAIN_HPP
+#endif
 

@@ -1,8 +1,11 @@
 #pragma once
 
+#include <map>
+#include <string>
 
 #include "ISearchableClient.hpp"
 #include "IClientManagment.hpp"
+class Client; // Forward declaration
 
 class ClientRepository : public ISearchableClient, public IClientManagment
 {
