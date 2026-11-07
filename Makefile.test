@@ -25,7 +25,8 @@ HPP =	include/main.hpp \
         include/IClientManagment.hpp \
         include/ISearchableClient.hpp \
 		include/ClientService.hpp \
-		include/ChannelMode.hpp
+		include/ChannelMode.hpp \
+		include/Channel.hpp
 
 
 MAIN =	tests/main.cpp 
@@ -36,7 +37,8 @@ SRCS =	$(MAIN) \
 		srcs/server/models/Client.cpp \
 		srcs/server/repositories/ClientRepository.cpp \
 		srcs/server/services/ClientService.cpp \
-		srcs/server/models/ChannelMode.cpp
+		srcs/server/models/ChannelMode.cpp \
+		srcs/server/models/Channel.cpp 
 
 OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 
