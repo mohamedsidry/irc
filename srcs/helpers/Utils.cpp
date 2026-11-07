@@ -34,7 +34,7 @@ bool Utils::startWith(const std::string& str, unsigned char c)
 
 bool Utils::hasAtLeastOne(const std::string& src, unsigned char c)
 {
-    if (set.empty() || src.empty())
+    if (src.empty() || src.empty())
         return false;
     return src.find(c) != std::string::npos;
 }
