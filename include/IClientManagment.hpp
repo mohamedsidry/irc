@@ -8,7 +8,7 @@ class IClientManagment
 {
     public:
         virtual ~IClientManagment(){}
-        virtual void addClient(const Client& client) = 0;
+        virtual Client* addClient(Client* client) = 0;
         virtual void removeClient(const std::string& nickname) = 0;
 };
 

@@ -21,8 +21,8 @@ void Tester::TClientRepo::test(const std::string& title)
     try
     {
         ClientRepository repository;
-        Client client1("Adam-AK47", "adambrands", "localhost", "debian-13");
-        Client client2("Bob-1337", "bobmarlin", "localhost", "debian-12");
+        Client *client1 = new Client("Adam-AK47", "adambrands", "localhost", "debian-13");
+        Client *client2 = new Client("Bob-1337", "bobmarlin", "localhost", "debian-12");
         std::cout << "Number of clients : " << repository.getAllClient().size() << std::endl;
         repository.addClient(client1);
         std::cout << "Number of clients after adding 1st client : " << repository.getAllClient().size() << std::endl;

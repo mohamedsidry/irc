@@ -6,23 +6,42 @@ ClientRepository::ClientRepository(){}
 
 
 
-ClientRepository::ClientRepository(const ClientRepository& copy):
-clients(copy.clients)
-{}
-
-
+ClientRepository::ClientRepository(const ClientRepository& copy)
+{
+    for (std::map<std::string, Client*>::const_iterator it = copy.clients.begin(); it != copy.clients.end(); ++it)
+    {
+        clients[it->first] = new Client(*it->second);
+    }
+}
 
 
 
 ClientRepository& ClientRepository::operator=(const ClientRepository& other)
 {
     if (this != &other)
-        this->clients = other.clients;
+    {
+        for (std::map<std::string, Client*>::iterator it = clients.begin();
+             it != clients.end(); ++it)
+        {
+            delete it->second;
+        }
+
+        clients.clear();
+
+        for (std::map<std::string, Client*>::const_iterator it = other.clients.begin();
+             it != other.clients.end(); ++it)
+        {
+            clients[it->first] = new Client(*it->second);
+        }
+    }
     return *this;
 }
 
-
-ClientRepository::~ClientRepository(){}
+ClientRepository::~ClientRepository()
+{
+    for (std::map<std::string, Client*>::iterator it = clients.begin(); it != clients.end(); ++it)
+        delete it->second;
+}
 
 
 
@@ -35,34 +54,37 @@ bool ClientRepository::hasClient(const std::string& nickname) const
 
 const Client& ClientRepository::getClient(const std::string& nickname) const
 {
-    std::map<std::string, Client>::const_iterator  client = clients.find(nickname);
+    std::map<std::string, Client*>::const_iterator  client = clients.find(nickname);
     if (client == clients.end())
         throw IllegalArgumentException("No client known by " + nickname + " here");
-    return client->second;
+    return *client->second;
 }
 
 
-void ClientRepository::addClient(const Client& client)
+Client* ClientRepository::addClient(Client* client)
 {
-    std::pair<std::map<std::string, Client>::iterator, bool> result;
+    std::pair<std::map<std::string, Client*>::iterator, bool> result;
 
-    result = clients.insert(
-        std::make_pair(client.getNickName(), client)
-    );
+    result = clients.insert(std::make_pair(client->getNickName(), client));
 
     if (result.second == false)
-        throw IllegalArgumentException(
-            client.getNickName() + " already used"
-        );
+        throw IllegalArgumentException( client->getNickName() + " already used");
+    return client;
 }
 
 
 void ClientRepository::removeClient(const std::string& nickname)
 {
-    clients.erase(nickname);
+    std::map<std::string, Client*>::iterator it = clients.find(nickname);
+
+    if (it != clients.end())
+    {
+        delete it->second;
+        clients.erase(it);
+    }
 }
 
-const std::map<std::string, Client>& ClientRepository::getAllClient(void) const
+const std::map<std::string, Client *>& ClientRepository::getAllClient(void) const
 {
     return this->clients;
 }
