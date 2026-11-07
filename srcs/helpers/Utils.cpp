@@ -12,3 +12,16 @@ bool Utils::isAllWhitespace(const std::string& str)
     return true;
 }
 
+
+bool Utils::hasOnly(const std::string& src, const std::string& set)
+{
+    if (set.empty() || src.empty())
+        return false;
+    for (std::string::const_iterator it = src.begin(); it != src.end(); ++it)
+    {
+        if (set.find(*it) == std::string::npos)
+            return false;
+    }
+    return true;
+}
+
