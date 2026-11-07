@@ -12,5 +12,6 @@ int main(int argc, char *argv[])
     Tester::TClient::test("Long Nickname", "Adam-AK474747", "adambrands", "localhost", "debian-13");
     Tester::TClientRepo::test("ClientRepository");
     Tester::TClientService::test("ClientService");
+    Tester::TChannelMode::test("ChannelModes & Options");
     return (EXIT_SUCCESS);
 }
