@@ -13,5 +13,6 @@ int main(int argc, char *argv[])
     Tester::TClientRepo::test("ClientRepository");
     Tester::TClientService::test("ClientService");
     Tester::TChannelMode::test("ChannelModes & Options");
+    Tester::TChannel::test("Channel");
     return (EXIT_SUCCESS);
 }

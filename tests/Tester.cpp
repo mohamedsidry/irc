@@ -185,3 +185,83 @@ void Tester::TChannelMode::test(const std::string& title)
 
 }
 
+
+
+
+void Tester::TChannel::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+
+    try
+    {
+        std::cout << "Valid Channel " << std::endl;
+        Channel channel("#global", "general conversations");
+        std::cout << channel << std::endl;
+    }
+    catch(const IllegalArgumentException& e)
+    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try
+    {
+        std::cout << "Channel name without # and &" << std::endl;
+        Channel channel("hometown", "general conversations");
+        std::cout << channel << std::endl;
+    }
+    catch(const IllegalArgumentException& e)
+    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+
+    try
+    {
+        std::cout << "Channel name with Ctr+G" << std::endl;
+        Channel channel("#holy\aland", "general conversations");
+        std::cout << channel << std::endl;
+    }
+    catch(const IllegalArgumentException& e)
+    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try
+    {
+        std::cout << "Channel name with comma" << std::endl;
+        Channel channel("#bla,bla", "general conversations");
+        std::cout << channel << std::endl;
+    }
+    catch(const IllegalArgumentException& e)
+    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try
+    {
+        std::cout << "Channel name with spaces" << std::endl;
+        Channel channel("&holy land", "general conversations");
+        std::cout << channel << std::endl;
+    }
+    catch(const IllegalArgumentException& e)
+    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try
+    {
+        std::cout << "Channel with Huge name" << std::endl;
+        std::string name = "#Huge_Channel";
+        for (int i = 0; i < 15; i++)
+            name += "-very-huge-channel"; 
+        Channel channel(name, "general conversations");
+        std::cout << channel << std::endl;
+    }
+    catch(const IllegalArgumentException& e)
+    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+
+    try
+    {
+        std::cout << "Channel with Huge Topic" << std::endl;
+        std::string topic = "#Huge_Topic";
+        for (int i = 0; i < 15; i++)
+            topic += "this-is-very-huge-topic"; 
+        Channel channel("#Huge_Topic", topic);
+        std::cout << channel << std::endl;
+    }
+    catch(const IllegalArgumentException& e)
+    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+}
+
