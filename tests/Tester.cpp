@@ -107,6 +107,40 @@ void Tester::TClientService::test(const std::string& title)
     catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
 }
 
+void Tester::TChannelData::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+    ChannelData data("Denzel Washinton", "Equalizer 1", "ifyouprayforraindealwithmud", 1024);
+    std::cout << data;
+
+}
+
+
+void Tester::TChannelDataService::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+    ChannelData vdata("#General", "this channel is for free speech...", "BE-free-4-ever", 256);
+    ChannelData fdata("Broken--", "this is channel with broken name ...", "brookkeeen", 256);
+    try
+    {
+        ChannelDataService vv(vdata);
+        std::cout << "Channel Name : " << vv.getChannelName() << std::endl;
+        std::cout << "Channel Topic : " << vv.getChannelTopic() << std::endl;
+        std::cout << "Channel Key : " << vv.getChannelKey() << std::endl;
+        std::cout << "Channel Limit : " << vv.getChannelLimit() << std::endl;
+
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try
+    {
+        ChannelDataService ff(fdata);
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+}
+
+
 
 
 
@@ -288,7 +322,7 @@ void Tester::TChannel::test(const std::string& title)
 
 
 
-void Tester::TChannelRepo::test(const std::string& title)
+void Tester::TSubscriptionRepo::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
 
@@ -345,7 +379,7 @@ void Tester::TChannelRepo::test(const std::string& title)
 }
 
 
-void Tester::TChannelService::test(const std::string& title)
+void Tester::TSubscriptionService::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
     SubscriptionRepository repository;

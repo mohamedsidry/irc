@@ -37,7 +37,28 @@ class Tester
             public:
                 static void test(const std::string& title);
         };
-
+        class TChannelData
+        {
+            private:
+                TChannelData();
+                TChannelData(const TChannelData&);
+                TChannelData& operator=(const TChannelData&);
+                ~TChannelData();
+            
+            public:
+                static void test(const std::string& title);
+        };
+        class TChannelDataService
+        {
+            private:
+                TChannelDataService();
+                TChannelDataService(const TChannelDataService&);
+                TChannelDataService& operator=(const TChannelDataService&);
+                ~TChannelDataService();
+            
+            public:
+                static void test(const std::string& title);
+        };
         class TChannelMode
         {
             private:
@@ -60,24 +81,24 @@ class Tester
             public:
                 static void test(const std::string& title);
         };
-        class TChannelRepo
+        class TSubscriptionRepo
         {
             private:
-                TChannelRepo();
-                TChannelRepo(const TChannelRepo&);
-                TChannelRepo& operator=(const TChannelRepo&);
-                ~TChannelRepo();
+                TSubscriptionRepo();
+                TSubscriptionRepo(const TSubscriptionRepo&);
+                TSubscriptionRepo& operator=(const TSubscriptionRepo&);
+                ~TSubscriptionRepo();
             
             public:
                 static void test(const std::string& title);
         };
-        class TChannelService
+        class TSubscriptionService
         {
             private:
-                TChannelService();
-                TChannelService(const TChannelService&);
-                TChannelService& operator=(const TChannelService&);
-                ~TChannelService();
+                TSubscriptionService();
+                TSubscriptionService(const TSubscriptionService&);
+                TSubscriptionService& operator=(const TSubscriptionService&);
+                ~TSubscriptionService();
             
             public:
                 static void test(const std::string& title);

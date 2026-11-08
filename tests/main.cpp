@@ -12,10 +12,11 @@ int main(int argc, char *argv[])
     Tester::TClient::test("Long Nickname", "Adam-AK474747", "adambrands", "localhost", "debian-13");
     Tester::TClientRepo::test("ClientRepository");
     Tester::TClientService::test("ClientService");
+    Tester::TChannelData::test("ChannelData");
+    Tester::TChannelDataService::test("ChannelDataService");
     Tester::TChannelMode::test("ChannelModes");
     Tester::TChannelModeService::test("ChannelModes Service");
-    Tester::TChannel::test("Channel");
-    Tester::TChannelRepo::test("SubscriptionRepository");
-    Tester::TChannelService::test("SubscriptionService");
+    Tester::TSubscriptionRepo::test("SubscriptionRepository");
+    Tester::TSubscriptionService::test("SubscriptionService");
     return (EXIT_SUCCESS);
 }
