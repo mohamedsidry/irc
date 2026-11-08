@@ -265,3 +265,137 @@ void Tester::TChannel::test(const std::string& title)
 
 }
 
+
+
+
+void Tester::TChannelRepo::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+
+    SubscriptionRepository repository;
+    Client *client1 = NULL;
+    Client *client2 = NULL;
+    client1 = new Client("Adam-AK47", "adambrands", "localhost", "debian-13");
+    client2 = new Client("Bob-1337", "bobmarlin", "localhost", "debian-12");
+    std::cout << "Number of subscribers : " << repository.getAllClient().size() << std::endl;
+    repository.addClient(client1);
+    std::cout << "Number of subscribers after adding 1st subscriber : " << repository.getAllClient().size() << std::endl;
+    repository.addClient(client2);
+    std::cout << "Number of subscribers after adding 2nd subscriber : " << repository.getAllClient().size() << std::endl;
+    
+    try
+    {
+        std::cout << "Check for subscriber that exist :" << std::endl;
+        std:: cout << "Is there a subscriber called Bob-1337 : " << (repository.hasClient("Bob-1337") ? "YES" : "NO") << std::endl;
+        std::cout << "Check for subscriber that is not exist :" << std::endl;
+        std:: cout << "Is there a subscriber called Bob-1338 : " << (repository.hasClient("Bob-1338") ? "YES" : "NO") << std::endl;
+
+    } catch (const IllegalArgumentException& e)
+    {
+        std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl; 
+    }
+
+    try
+    {
+        std::cout << "get subscriber that exist :" << std::endl;
+        repository.getClient("Bob-1337");
+        std::cout << "get subscriber that is not exist :" << std::endl;
+        repository.getClient("Bob-42");
+
+    } catch (const IllegalArgumentException& e)
+    {
+        std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl; 
+    }
+
+    try
+    {
+        std::cout << "remove subscriber that exist :" << std::endl;
+        repository.removeClient("Adam-AK47");
+        std::cout << "remove subscriber that is not exist :" << std::endl;
+        repository.removeClient("Bob-42");
+        std::cout << "Number of subscribers : " << repository.getAllClient().size() << std::endl;
+        std::cout << *repository.getClient("Bob-1337");
+
+    } catch (const IllegalArgumentException& e)
+    {
+        std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl; 
+    }
+    delete client1;
+    delete client2;
+}
+
+
+void Tester::TChannelService::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+    SubscriptionRepository repository;
+    SubscriptionService service(repository);
+
+    Client *client1 = NULL;
+    Client *client2 = NULL;
+    Client *client3 = NULL;
+    client1 = new Client("Adam-AK47", "adambrands", "localhost", "debian-13");
+    client2 = new Client("Bob-1337", "bobmarlin", "localhost", "debian-14");
+    client3 = new Client("Steve-HRV", "steve-harvy", "localhost", "debian-15");
+
+
+
+    try
+    {
+        service.subscribe(client1);
+        std::cout << *client1;
+        std::cout << client1->getNickName() << " is Subscribed : " << (service.isSubscribed(client1) ? "YES" : "NO") << std::endl;
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    try
+    {
+        service.subscribe(client2);
+        std::cout << *client2;
+        std::cout << client2->getNickName() << " is Subscribed : " << (service.isSubscribed(client2) ? "YES" : "NO") << std::endl;
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    
+    try
+    {
+        std::cout << *client3;
+        std::cout << client3->getNickName() << " is Subscribed : " << (service.isSubscribed(client3) ? "YES" : "NO") << std::endl;
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try
+    {
+        service.subscribe(client3);
+        std::cout << *client3;
+        std::cout << client3->getNickName() << " is Subscribed : " << (service.isSubscribed(client3) ? "YES" : "NO") << std::endl;
+        service.unsubscribe(client3);
+        std::cout << client3->getNickName() << " is Subscribed : " << (service.isSubscribed(client3->getNickName()) ? "YES" : "NO") << std::endl;
+
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try
+    {
+        service.subscribe(client1);
+        service.subscribe(client2);
+        service.subscribe(client3);
+        std::cout << client1->getNickName() << " is Subscribed : " << (service.isSubscribed(client1) ? "YES" : "NO") << std::endl;
+        std::cout << client2->getNickName() << " is Subscribed : " << (service.isSubscribed(client2) ? "YES" : "NO") << std::endl;
+        std::cout << client3->getNickName() << " is Subscribed : " << (service.isSubscribed(client3) ? "YES" : "NO") << std::endl;
+        std::cout << "Unsubscribe All" << std::endl;
+        service.unsubscribeAll();
+        std::cout << client1->getNickName() << " is Subscribed : " << (service.isSubscribed(client1) ? "YES" : "NO") << std::endl;
+        std::cout << client2->getNickName() << " is Subscribed : " << (service.isSubscribed(client2) ? "YES" : "NO") << std::endl;
+        std::cout << client3->getNickName() << " is Subscribed : " << (service.isSubscribed(client3) ? "YES" : "NO") << std::endl;
+
+
+
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+
+    delete client1;
+    delete client2;
+    delete client3;
+}

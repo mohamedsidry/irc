@@ -60,6 +60,29 @@ class Tester
             public:
                 static void test(const std::string& title);
         };
+        class TChannelRepo
+        {
+            private:
+                TChannelRepo();
+                TChannelRepo(const TChannelRepo&);
+                TChannelRepo& operator=(const TChannelRepo&);
+                ~TChannelRepo();
+            
+            public:
+                static void test(const std::string& title);
+        };
+        class TChannelService
+        {
+            private:
+                TChannelService();
+                TChannelService(const TChannelService&);
+                TChannelService& operator=(const TChannelService&);
+                ~TChannelService();
+            
+            public:
+                static void test(const std::string& title);
+        };
+
 };
 
 
