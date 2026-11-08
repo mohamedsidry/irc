@@ -7,6 +7,8 @@
 #include "ChannelModeService.hpp"
 #include "ChannelDataService.hpp"
 #include "ChannelData.hpp"
+#include "SubscriptionRepository.hpp"
+#include "SubscriptionService.hpp"
 
 class Channel
 {
@@ -15,7 +17,8 @@ class Channel
         ChannelDataService  dataService;
         ChannelMode         mode;
         ChannelModeService  modeService;
-
+        SubscriptionRepository subscribers;
+        SubscriptionService subsService;
         Channel();
         Channel(const Channel& copy);
         Channel& operator=(const Channel&);

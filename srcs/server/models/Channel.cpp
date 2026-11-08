@@ -10,7 +10,9 @@ Channel::Channel(const std::string& name, const std::string& topic):
 data(name, topic, Channel::DEFAULT_KEY, Channel::DEFAULT_SUBSCRIBERS_LIMIT),
 dataService(data),
 mode(Channel::DEFAULT_MODE),
-modeService(mode)
+modeService(mode),
+subscribers(),
+subsService(subscribers)
 {}
 
 
