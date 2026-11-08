@@ -52,12 +52,12 @@ bool ClientRepository::hasClient(const std::string& nickname) const
 }
 
 
-const Client& ClientRepository::getClient(const std::string& nickname) const
+Client* ClientRepository::getClient(const std::string& nickname)
 {
     std::map<std::string, Client*>::const_iterator  client = clients.find(nickname);
     if (client == clients.end())
         throw IllegalArgumentException("No client known by " + nickname + " here");
-    return *client->second;
+    return client->second;
 }
 
 

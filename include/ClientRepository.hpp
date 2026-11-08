@@ -19,9 +19,9 @@ class ClientRepository : public ISearchableClient, public IClientManagment
         ~ClientRepository();
 
         bool hasClient(const std::string& nickname) const;
-        const Client& getClient(const std::string& nickname) const;
-        Client* addClient(Client* client);
         void removeClient(const std::string& nickname);
+        Client* getClient(const std::string& nickname);
+        Client* addClient(Client* client);
         const std::map<std::string, Client*>& getAllClient(void) const;
 };
 

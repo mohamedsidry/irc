@@ -17,7 +17,7 @@ ClientService::~ClientService(){}
 
 
 
-const Client& ClientService::findClient(const std::string& nickname) const
+Client* ClientService::findClient(const std::string& nickname) const
 {
     return repository.getClient(nickname);
 }

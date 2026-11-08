@@ -9,6 +9,6 @@ class ISearchableClient
     public:
         virtual ~ISearchableClient(){}
         virtual bool hasClient(const std::string& nickname) const = 0;
-        virtual const Client& getClient(const std::string& nickname) const = 0;
+        virtual Client* getClient(const std::string& nickname) = 0;
 };
 
