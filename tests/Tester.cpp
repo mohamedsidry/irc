@@ -135,6 +135,53 @@ void Tester::TChannelMode::test(const std::string& title)
 void Tester::TChannelModeService::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+    ChannelModeService service;
+    /**
+    ∗ MODE - Change the channel’s mode:
+    · i: Set/remove Invite-only channel
+    · t: Set/remove the restrictions of the TOPIC command to channel operators
+    · k: Set/remove the channel key (password)
+    · o: Give/take channel operator privilege
+    · l: Set/remove the user limit to channel
+*/
+
+    std::cout << "Default channel mode : " << service.getChannelModes() << std::endl;
+    try{service.updateChannelMode("+i");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.updateChannelMode("+j");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    try{service.updateChannelMode("+k");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.updateChannelMode("+l");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    try{service.updateChannelMode("+m");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    try{service.updateChannelMode("+o");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    std::cout << "channel mode +i +j +k +l +m +o  : " << service.getChannelModes() << std::endl;
+
+    try{service.updateChannelMode("-j");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    try{service.updateChannelMode("-k");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try{service.updateChannelMode("-l");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    try{service.updateChannelMode("-m");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    try{service.updateChannelMode("-o");}
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    std::cout << "channel mode  -j -k -l -m -o  : " << service.getChannelModes() << std::endl;
 }
 
 

@@ -82,6 +82,17 @@ class Tester
             public:
                 static void test(const std::string& title);
         };
+        class TChannelModeService
+        {
+            private:
+                TChannelModeService();
+                TChannelModeService(const TChannelModeService&);
+                TChannelModeService& operator=(const TChannelModeService&);
+                ~TChannelModeService();
+            
+            public:
+                static void test(const std::string& title);
+        };
 
 };
 
