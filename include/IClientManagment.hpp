@@ -10,5 +10,6 @@ class IClientManagment
         virtual ~IClientManagment(){}
         virtual Client* addClient(Client* client) = 0;
         virtual void removeClient(const std::string& nickname) = 0;
+        virtual void removeAll(void) = 0;
 };
 

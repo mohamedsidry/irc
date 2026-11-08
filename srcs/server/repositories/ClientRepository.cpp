@@ -84,6 +84,17 @@ void ClientRepository::removeClient(const std::string& nickname)
     }
 }
 
+
+void ClientRepository::removeAll(void)
+{
+    for (std::map<std::string, Client*>::iterator it = clients.begin(); it != clients.end(); it++)
+    {
+        delete it->second;
+        clients.erase(it);
+    }
+}
+
+
 const std::map<std::string, Client *>& ClientRepository::getAllClient(void) const
 {
     return this->clients;

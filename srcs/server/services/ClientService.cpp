@@ -50,3 +50,8 @@ void ClientService::removeClient(const std::string& nickname)
 }
 
 
+void ClientService::removeAll(void)
+{
+    repository.removeAll();
+}
+
