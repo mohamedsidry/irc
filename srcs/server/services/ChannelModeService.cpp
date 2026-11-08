@@ -2,7 +2,7 @@
 #include "ChannelMode.hpp"
 #include "ChannelModeService.hpp"
 #include "IllegalArgumentException.hpp"
-
+#include "Channel.hpp"
 
 /**
     v - give/take the ability to speak on a moderated channel;
@@ -27,22 +27,9 @@
 · l: Set/remove the user limit to channel
 */
 
-std::string ChannelModeService::SUPPORTED_OPTIONS = "itkol";
-std::string ChannelModeService::DEFAULT_MODE = "t";
-
-
-ChannelModeService::ChannelModeService():
-mode(ChannelModeService::DEFAULT_MODE)
+ChannelModeService::ChannelModeService(ChannelMode& mode):
+mode(mode)
 {}
-
-
-
-ChannelModeService& ChannelModeService::operator=(const ChannelModeService& other)
-{
-    if (this != &other)
-        this->mode = other.mode;
-    return (*this);
-}
 
 
 ChannelModeService::~ChannelModeService(){}
@@ -57,6 +44,7 @@ const std::string& ChannelModeService::getChannelModes(void) const
 void ChannelModeService::updateChannelMode(const std::string& mode)
 {
     size_t adding = 0;
+    validateMode(mode);
     for (std::string::const_iterator it = mode.begin(); it != mode.end(); it++)
     {
         if (*it == '+' || *it == '-')
@@ -74,8 +62,7 @@ void ChannelModeService::addMode(unsigned char option)
 
 void ChannelModeService::removeMode(unsigned char option)
 {
-    if (ChannelModeService::SUPPORTED_OPTIONS.find(option) == std::string::npos)
-        throw IllegalArgumentException("Invalid channel mode option : " + std::string(1, option));
+    validateOption(option);
     mode.removeFlag(option);
 }
 
@@ -86,7 +73,7 @@ bool ChannelModeService::hasMode(unsigned char option) const
 
 void ChannelModeService::validateOption(unsigned char option) const
 {
-    if (ChannelModeService::SUPPORTED_OPTIONS.find(option) == std::string::npos)
+    if (Channel::SUPPORTED_MODES.find(option) == std::string::npos)
         throw IllegalArgumentException("Invalid channel mode option : " + std::string(1, option));
 }
 

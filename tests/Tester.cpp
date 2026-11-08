@@ -135,7 +135,8 @@ void Tester::TChannelMode::test(const std::string& title)
 void Tester::TChannelModeService::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
-    ChannelModeService service;
+    ChannelMode mode("t");
+    ChannelModeService service(mode);
     /**
     ∗ MODE - Change the channel’s mode:
     · i: Set/remove Invite-only channel

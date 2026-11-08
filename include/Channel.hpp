@@ -13,6 +13,7 @@ class Channel
     private:
         ChannelData         data;
         ChannelDataService  dataService;
+        ChannelMode         mode;
         ChannelModeService  modeService;
 
         Channel();
@@ -22,13 +23,12 @@ class Channel
     public:
         Channel(const std::string& name, const std::string& topic);
         ~Channel();
-
-        const ChannelModeService& getChannelModeService(void) const;
-
-        static size_t NAME_LIMIT;
-        static size_t TOPIC_LIMIT;
-        static size_t SUBSCRIBERS_LIMIT;
-        static std::string DEFAULT_KEY;
+        static const size_t NAME_LIMIT = 200;
+        static const size_t TOPIC_LIMIT = 256;
+        static const size_t DEFAULT_SUBSCRIBERS_LIMIT = 1024;
+        static const std::string DEFAULT_KEY;
+        static const std::string DEFAULT_MODE;
+        static const std::string SUPPORTED_MODES;
         friend std::ostream& operator<<(std::ostream& os, const Channel& ref);
 };
 
