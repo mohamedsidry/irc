@@ -19,6 +19,7 @@
 #include "ClientService.hpp"
 #include "ChannelMode.hpp"
 #include "Channel.hpp"
-
+#include "SubscriptionRepository.hpp"
+#include "SubscriptionService.hpp"
 #endif
 
