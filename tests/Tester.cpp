@@ -59,7 +59,7 @@ void Tester::TClientRepo::test(const std::string& title)
             std::cout << "remove client that is not exist :" << std::endl;
             repository.removeClient("Bob-42");
             std::cout << "Number of clients : " << repository.getAllClient().size() << std::endl;
-            std::cout << repository.getClient("Bob-1337");
+            std::cout << *repository.getClient("Bob-1337");
         }
 
 
@@ -113,78 +113,29 @@ void Tester::TClientService::test(const std::string& title)
 void Tester::TChannelMode::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
-
-    try
-    {
-        ChannelMode mode;
-        std::cout << "Default ChannelMode : " << mode.getModes() << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-
-    try
-    {
-        ChannelMode mode("itkol");
-        std::cout << "Param ChannelMode : " << mode.getModes() << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-    try
-    {
-        ChannelMode mode;
-        mode.setMode("itkol");
-        std::cout << "Set valid ChannelMode : " << mode.getModes() << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-    try
-    {
-        ChannelMode mode;
-        mode.setMode("itkolx");
-        std::cout << "Set non valid ChannelMode : " << mode.getModes() << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-    try
-    {
-        ChannelMode mode;
-        std::cout << "ChannelMode option : " << mode.getModes() << std::endl;
-        mode.updateMode("-t");
-        std::cout << "Update valid ChannelMode option : " << mode.getModes() << std::endl;
-        mode.updateMode("+i");
-        mode.updateMode("+t");
-        mode.updateMode("+k");
-        mode.updateMode("+o");
-        mode.updateMode("+l");
-        std::cout << "Update valid ChannelMode option : " << mode.getModes() << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-    try
-    {
-        ChannelMode mode;
-        mode.updateMode("+Y");
-        std::cout << "Update non valid ChannelMode option : " << mode.getModes() << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-    try
-    {
-        ChannelMode mode;
-        mode.hasOption('t');
-        std::cout << "Has Option t : " << (mode.hasOption('t') ? "True" : "False") << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
+    ChannelMode mode("t");
+    std::cout << "ChannelMode flags : " << mode.getFlags() << std::endl;
+    mode.addFlag('i');
+    mode.addFlag('t');
+    mode.addFlag('k');
+    mode.addFlag('o');
+    mode.addFlag('l');
+    mode.addFlag('l');
+    mode.addFlag('l');
+    std::cout << "ChannelMode flags : " << mode.getFlags() << std::endl;
+    mode.removeFlag('l');
+    mode.removeFlag('o');
+    mode.removeFlag('k');
+    mode.removeFlag('t');
+    std::cout << "ChannelMode flags : " << mode.getFlags() << std::endl;
+    std::cout << "has flag {i} : " << (mode.hasFlag('i') ? "YES" : "NO") << std::endl;
 }
 
+
+void Tester::TChannelModeService::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+}
 
 
 
