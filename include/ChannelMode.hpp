@@ -8,21 +8,17 @@ class ChannelMode
 {
     private:
         std::string flags;
-        void modeValidation(const std::string& options) const;
-        bool validOption(const std::string& option) const;
+        ChannelMode();
 
     public:
-        static std::string SUPPORTED_MODES;
-        static std::string DEFAULT_MODES;
-        ChannelMode();
-        ChannelMode(const std::string& mode);
+        ChannelMode(const std::string& flags);
         ChannelMode(const ChannelMode& copy);
         ChannelMode& operator=(const ChannelMode& other);
         ~ChannelMode();
 
-        const std::string& getModes() const;
-        void setMode(const std::string& mode);
-        void updateMode(const std::string& option);
-        bool hasOption(unsigned char option) const;
+        const std::string& getFlags() const;
+        void addFlag(unsigned char c);
+        void removeFlag(unsigned char c);
+        bool hasFlag(unsigned char option) const;
 };
 

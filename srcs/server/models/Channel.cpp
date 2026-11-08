@@ -1,5 +1,6 @@
 #include "../../../include/Channel.hpp"
-
+#include "../../../include/Utils.hpp"
+#include "../../../include/IllegalArgumentException.hpp"
 
 size_t Channel::NAME_LIMIT = 200;
 size_t Channel::TOPIC_LIMIT = 256;
@@ -14,7 +15,7 @@ Channel::Channel(const std::string& name, const std::string& topic)
     this->topic = topic;
     this->key = Channel::DEFAULT_KEY;
     this->limits = Channel::MAX_SUBSCRIBERS;
-    this->mode = ChannelMode();
+
 }
 
 
@@ -28,7 +29,7 @@ const std::string& Channel::getChannelName(void) const {return name;}
 const std::string& Channel::getChannelTopic(void) const {return topic;}
 const std::string& Channel::getChannelKey(void) const {return key;}
 size_t Channel::getChannelLimits(void) const {return limits;}
-const ChannelMode& Channel::getChannelMode(void) const {return mode;}
+const ChannelModeService& Channel::getChannelModeService(void) const {return modeService;}
 
 
 void Channel::setChannelName(const std::string& name)
@@ -82,6 +83,6 @@ std::ostream& operator<<(std::ostream& os, const Channel& channel)
     os << "CHANNEL TOPIC : " << channel.getChannelTopic() << std::endl;
     os << "CHANNEL LIMITS : " << channel.getChannelLimits() << std::endl;
     os << "CHANNEL KEY  : " << channel.getChannelKey() << std::endl;
-    os << "CHANNEL MODES  : " << channel.getChannelMode().getModes();
+    os << "CHANNEL MODES  : " << channel.getChannelModeService().getChannelModes();
     return os;
 }

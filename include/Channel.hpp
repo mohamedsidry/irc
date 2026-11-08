@@ -3,7 +3,9 @@
 #include <iostream>
 #include <string>
 #include <cstddef>
-#include "ChannelMode.hpp"
+
+#include "ChannelModeService.hpp"
+
 
 class Channel
 {
@@ -12,8 +14,7 @@ class Channel
         std::string topic;
         size_t limits;
         std::string key;
-        ChannelMode mode;
-
+        ChannelModeService modeService;
         void nameValidation(const std::string& name) const;
         void topicValidation(const std::string& name) const;
 
@@ -29,7 +30,7 @@ class Channel
         const std::string& getChannelTopic(void) const;
         const std::string& getChannelKey(void) const;
         size_t getChannelLimits(void) const;
-        const ChannelMode& getChannelMode(void) const;
+        const ChannelModeService& getChannelModeService(void) const;
 
         void setChannelName(const std::string& name);
         void setChannelTopic(const std::string& topic);
