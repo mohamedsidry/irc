@@ -54,24 +54,50 @@ const std::string& ChannelModeService::getChannelModes(void) const
 }
 
 
-void ChannelModeService::updateChannelMode(const std::string& option)
+void ChannelModeService::updateChannelMode(const std::string& mode)
 {
-    if(validOption(option))
-        return option[0] == '+' ? mode.addFlag(option[1]) : mode.removeFlag(option[1]);
-    throw IllegalArgumentException("Invalid channel mode option : " + option);
+    size_t adding = 0;
+    for (std::string::const_iterator it = mode.begin(); it != mode.end(); it++)
+    {
+        if (*it == '+' || *it == '-')
+            *it == '+' ? adding = true : adding = false;
+        else
+            adding == true ? addMode(*it) : removeMode(*it);
+    }
 }
 
-bool ChannelModeService::validOption(const std::string& option) const
+void ChannelModeService::addMode(unsigned char option)
 {
-    if (option.size() != 2)
-        return false;
-
-    if (option[0] != '+' && option[0] != '-')
-        return false;
-
-    if (ChannelModeService::SUPPORTED_OPTIONS.find(option[1]) == std::string::npos)
-        return false;
-
-    return true;
+    validateOption(option);
+    mode.addFlag(option);
 }
 
+void ChannelModeService::removeMode(unsigned char option)
+{
+    if (ChannelModeService::SUPPORTED_OPTIONS.find(option) == std::string::npos)
+        throw IllegalArgumentException("Invalid channel mode option : " + std::string(1, option));
+    mode.removeFlag(option);
+}
+
+bool ChannelModeService::hasMode(unsigned char option) const
+{
+    return mode.hasFlag(option);
+}
+
+void ChannelModeService::validateOption(unsigned char option) const
+{
+    if (ChannelModeService::SUPPORTED_OPTIONS.find(option) == std::string::npos)
+        throw IllegalArgumentException("Invalid channel mode option : " + std::string(1, option));
+}
+
+void ChannelModeService::validateMode(const std::string& mode) const
+{
+    if (mode.empty() || Utils::isAllWhitespace(mode) || (!Utils::startWith(mode, '+') && !Utils::startWith(mode, '-')))
+        throw IllegalArgumentException("Invalid channel mode : " + mode);
+    for (std::string::const_iterator it = mode.begin(); it != mode.end(); it++)
+    {
+        if (*it == '+' || *it == '-')
+            continue;
+        validateOption(*it);
+    }
+}

@@ -7,7 +7,8 @@ class ChannelModeService
 {
     private:
         ChannelMode mode;
-        bool validOption(const std::string& option) const;
+        void validateOption(unsigned char c) const;
+        void validateMode(const std::string& option) const;
         
     public:
         ChannelModeService();
@@ -17,6 +18,9 @@ class ChannelModeService
 
         const   std::string& getChannelModes(void) const;
         void    updateChannelMode(const std::string& option);
+        void    addMode(unsigned char option);
+        void    removeMode(unsigned char option);
+        bool    hasMode(unsigned char option) const;
 
         static std::string SUPPORTED_OPTIONS;
         static std::string DEFAULT_MODE;
