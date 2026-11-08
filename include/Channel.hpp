@@ -5,18 +5,15 @@
 #include <cstddef>
 
 #include "ChannelModeService.hpp"
-
+#include "ChannelDataService.hpp"
+#include "ChannelData.hpp"
 
 class Channel
 {
     private:
-        std::string name;
-        std::string topic;
-        size_t limits;
-        std::string key;
-        ChannelModeService modeService;
-        void nameValidation(const std::string& name) const;
-        void topicValidation(const std::string& name) const;
+        ChannelData         data;
+        ChannelDataService  dataService;
+        ChannelModeService  modeService;
 
         Channel();
         Channel(const Channel& copy);
@@ -26,20 +23,12 @@ class Channel
         Channel(const std::string& name, const std::string& topic);
         ~Channel();
 
-        const std::string& getChannelName(void) const;
-        const std::string& getChannelTopic(void) const;
-        const std::string& getChannelKey(void) const;
-        size_t getChannelLimits(void) const;
         const ChannelModeService& getChannelModeService(void) const;
-
-        void setChannelName(const std::string& name);
-        void setChannelTopic(const std::string& topic);
-        void setChannelLimits(size_t size);
 
         static size_t NAME_LIMIT;
         static size_t TOPIC_LIMIT;
-        static size_t MAX_SUBSCRIBERS;
+        static size_t SUBSCRIBERS_LIMIT;
         static std::string DEFAULT_KEY;
+        friend std::ostream& operator<<(std::ostream& os, const Channel& ref);
 };
 
-std::ostream& operator<<(std::ostream& os, const Channel& ref);
