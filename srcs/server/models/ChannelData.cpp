@@ -1,14 +1,12 @@
 #include "ChannelData.hpp"
 
 
-ChannelData::ChannelData(const std::string& metaName, const std::string& metaTopic, const std::string& metaKey, std::size_t metaLimit, const std::string& mode):
+ChannelData::ChannelData(const std::string& metaName, const std::string& metaTopic, const std::string& metaKey, std::size_t metaLimit, const std::string& initialMode):
 metaData(metaName, metaTopic, metaKey, metaLimit),
-mode(mode),
+mode(initialMode),
 subscribers(),
 operators()
 {}
-
-ChannelData::~ChannelData(){}
 
 
 ChannelMetaData&        ChannelData::getMetaData(void){return metaData;}
