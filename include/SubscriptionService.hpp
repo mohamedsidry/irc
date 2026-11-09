@@ -13,11 +13,10 @@ class SubscriptionService
     
     private:
         SubscriptionRepository& repository;
-        SubscriptionService(const SubscriptionService& copy); // delete
-        SubscriptionService& operator=(const SubscriptionService& other); // delete
+        SubscriptionService(const SubscriptionService& copy); 
+        SubscriptionService& operator=(const SubscriptionService& other);
     public:
         SubscriptionService(SubscriptionRepository& repository);
-        ~SubscriptionService();
         Client* subscribe(Client* client);
         void unsubscribe(Client* client);
         void unsubscribe(const std::string& nickname);

@@ -11,9 +11,6 @@ repository(repo)
 
 
 
-SubscriptionService::~SubscriptionService(){}
-
-
 Client* SubscriptionService::subscribe(Client* client)
 {
     if (client && !isSubscribed(client))
