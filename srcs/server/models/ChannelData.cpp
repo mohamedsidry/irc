@@ -1,40 +1,14 @@
 #include "ChannelData.hpp"
 
 
-ChannelData::ChannelData(const std::string& metaName, const std::string& metaTopic, const std::string& metaKey, size_t metaLimit, const std::string& mode):
+ChannelData::ChannelData(const std::string& metaName, const std::string& metaTopic, const std::string& metaKey, std::size_t metaLimit, const std::string& mode):
 metaData(metaName, metaTopic, metaKey, metaLimit),
 mode(mode),
 subscribers(),
 operators()
 {}
 
-
-ChannelData::ChannelData(const ChannelData& copy):
-metaData(copy.metaData),
-mode(copy.mode),
-subscribers(copy.subscribers),
-operators(copy.operators)
-{}
-
-
-
-ChannelData& ChannelData::operator=(const ChannelData& other)
-{
-    if (this != &other)
-    {
-        this->metaData = other.metaData;
-        this->mode = other.mode;
-        this->subscribers = other.subscribers;
-        this->operators = other.operators;
-    }
-    return (*this);
-}
-
-
-
 ChannelData::~ChannelData(){}
-
-
 
 
 ChannelMetaData&        ChannelData::getMetaData(void){return metaData;}
