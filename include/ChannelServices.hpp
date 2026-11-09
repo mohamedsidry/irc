@@ -1,6 +1,6 @@
 
-#ifndef CHANNELSERVICE_HPP
-#define CHANNELSERVICE_HPP
+#ifndef CHANNELSERVICES_HPP
+#define CHANNELSERVICES_HPP
 
 #include "ChannelMetaDataService.hpp"
 #include "ChannelModeService.hpp"
@@ -31,5 +31,5 @@ class ChannelServices
         const OperateService& getOperateService(void)const ;
 };
 
-#endif // CHANNELSERVICE_HPP
+#endif // CHANNELSERVICES_HPP
 
