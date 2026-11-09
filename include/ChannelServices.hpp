@@ -15,7 +15,9 @@ class ChannelServices
         ChannelModeService      modeService;
         SubscriptionService     subscriptionService;
         OperateService          operateService;
-        ChannelServices();
+        
+        ChannelServices(const ChannelServices&); // delete
+        ChannelServices& operator=(const ChannelServices&); // delete
     public:
         ChannelServices(ChannelData& data);
         ~ChannelServices();
