@@ -16,11 +16,10 @@ class ChannelServices
         SubscriptionService     subscriptionService;
         OperateService          operateService;
         
-        ChannelServices(const ChannelServices&); // delete
-        ChannelServices& operator=(const ChannelServices&); // delete
+        ChannelServices(const ChannelServices&);
+        ChannelServices& operator=(const ChannelServices&);
     public:
         ChannelServices(ChannelData& data);
-        ~ChannelServices();
 
         ChannelMetaDataService& getMetaDataService(void);
         ChannelModeService& getModeService(void);

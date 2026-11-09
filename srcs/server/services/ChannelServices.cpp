@@ -9,10 +9,6 @@ operateService(data.getOperators())
 {}
 
 
-ChannelServices::~ChannelServices(){}
-
-
-
 
 
 ChannelMetaDataService& ChannelServices::getMetaDataService(void){return metaDataService;}
