@@ -2,17 +2,17 @@
 
 #include <string>
 
-class ChannelData;
+class ChannelMetaData;
 
-class ChannelDataService
+class ChannelMetaDataService
 {
     private:
-        ChannelData& data;
+        ChannelMetaData& data;
         void validateName(const std::string& name) const;
         void validateTopic(const std::string& topic) const;
     public:
-        ChannelDataService(ChannelData& data);
-        ~ChannelDataService();
+        ChannelMetaDataService(ChannelMetaData& data);
+        ~ChannelMetaDataService();
         void changeName(const std::string& name);
         void changeTopic(const std::string& topic);
         void changeKey(const std::string& key);

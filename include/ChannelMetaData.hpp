@@ -4,19 +4,19 @@
 #include <iostream>
 
 
-class ChannelData
+class ChannelMetaData
 {
     private:
         std::string name;
         std::string topic;
         std::string key;
         size_t limit;
-        ChannelData();
+        ChannelMetaData();
     public:
-        ChannelData(const std::string& name, const std::string& topic, const std::string& key, size_t limit);
-        ChannelData(const ChannelData& copy);
-        ChannelData& operator=(const ChannelData& other);
-        ~ChannelData();
+        ChannelMetaData(const std::string& name, const std::string& topic, const std::string& key, size_t limit);
+        ChannelMetaData(const ChannelMetaData& copy);
+        ChannelMetaData& operator=(const ChannelMetaData& other);
+        ~ChannelMetaData();
 
         const std::string& getChannelName(void) const;
         const std::string& getChannelTopic(void) const;
@@ -29,5 +29,5 @@ class ChannelData
 };
 
 
-std::ostream& operator<<(std::ostream&, const ChannelData& ref);
+std::ostream& operator<<(std::ostream&, const ChannelMetaData& ref);
 

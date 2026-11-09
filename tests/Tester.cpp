@@ -107,23 +107,23 @@ void Tester::TClientService::test(const std::string& title)
     catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
 }
 
-void Tester::TChannelData::test(const std::string& title)
+void Tester::TChannelMetaData::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
-    ChannelData data("Denzel Washinton", "Equalizer 1", "ifyouprayforraindealwithmud", 1024);
+    ChannelMetaData data("Denzel Washinton", "Equalizer 1", "ifyouprayforraindealwithmud", 1024);
     std::cout << data;
 
 }
 
 
-void Tester::TChannelDataService::test(const std::string& title)
+void Tester::TChannelMetaDataService::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
-    ChannelData vdata("#General", "this channel is for free speech...", "BE-free-4-ever", 256);
-    ChannelData fdata("Broken--", "this is channel with broken name ...", "brookkeeen", 256);
+    ChannelMetaData vdata("#General", "this channel is for free speech...", "BE-free-4-ever", 256);
+    ChannelMetaData fdata("Broken--", "this is channel with broken name ...", "brookkeeen", 256);
     try
     {
-        ChannelDataService vv(vdata);
+        ChannelMetaDataService vv(vdata);
         std::cout << "Channel Name : " << vv.getChannelName() << std::endl;
         std::cout << "Channel Topic : " << vv.getChannelTopic() << std::endl;
         std::cout << "Channel Key : " << vv.getChannelKey() << std::endl;
@@ -134,7 +134,7 @@ void Tester::TChannelDataService::test(const std::string& title)
 
     try
     {
-        ChannelDataService ff(fdata);
+        ChannelMetaDataService ff(fdata);
     }
     catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
 

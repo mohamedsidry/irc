@@ -37,24 +37,24 @@ class Tester
             public:
                 static void test(const std::string& title);
         };
-        class TChannelData
+        class TChannelMetaData
         {
             private:
-                TChannelData();
-                TChannelData(const TChannelData&);
-                TChannelData& operator=(const TChannelData&);
-                ~TChannelData();
+                TChannelMetaData();
+                TChannelMetaData(const TChannelMetaData&);
+                TChannelMetaData& operator=(const TChannelMetaData&);
+                ~TChannelMetaData();
             
             public:
                 static void test(const std::string& title);
         };
-        class TChannelDataService
+        class TChannelMetaDataService
         {
             private:
-                TChannelDataService();
-                TChannelDataService(const TChannelDataService&);
-                TChannelDataService& operator=(const TChannelDataService&);
-                ~TChannelDataService();
+                TChannelMetaDataService();
+                TChannelMetaDataService(const TChannelMetaDataService&);
+                TChannelMetaDataService& operator=(const TChannelMetaDataService&);
+                ~TChannelMetaDataService();
             
             public:
                 static void test(const std::string& title);

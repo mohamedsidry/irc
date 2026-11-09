@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
     Tester::TClient::test("Long Nickname", "Adam-AK474747", "adambrands", "localhost", "debian-13");
     Tester::TClientRepo::test("ClientRepository");
     Tester::TClientService::test("ClientService");
-    Tester::TChannelData::test("ChannelData");
-    Tester::TChannelDataService::test("ChannelDataService");
+    Tester::TChannelMetaData::test("ChannelMetaData");
+    Tester::TChannelMetaDataService::test("ChannelMetaDataService");
     Tester::TChannelMode::test("ChannelModes");
     Tester::TChannelModeService::test("ChannelModes Service");
     Tester::TSubscriptionRepo::test("SubscriptionRepository");

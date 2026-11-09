@@ -5,8 +5,8 @@
 #include <cstddef>
 
 #include "ChannelModeService.hpp"
-#include "ChannelDataService.hpp"
-#include "ChannelData.hpp"
+#include "ChannelMetaDataService.hpp"
+#include "ChannelMetaData.hpp"
 #include "SubscriptionRepository.hpp"
 #include "SubscriptionService.hpp"
 #include "OperatorsRepository.hpp"
@@ -15,8 +15,8 @@
 class Channel
 {
     private:
-        ChannelData         data;
-        ChannelDataService  dataService;
+        ChannelMetaData         data;
+        ChannelMetaDataService  dataService;
         ChannelMode         mode;
         ChannelModeService  modeService;
         SubscriptionRepository subscribers;
