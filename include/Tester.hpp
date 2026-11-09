@@ -70,13 +70,13 @@ class Tester
             public:
                 static void test(const std::string& title);
         };
-        class TChannel
+        class TChannelModeService
         {
             private:
-                TChannel();
-                TChannel(const TChannel&);
-                TChannel& operator=(const TChannel&);
-                ~TChannel();
+            TChannelModeService();
+            TChannelModeService(const TChannelModeService&);
+            TChannelModeService& operator=(const TChannelModeService&);
+            ~TChannelModeService();
             
             public:
                 static void test(const std::string& title);
@@ -84,38 +84,56 @@ class Tester
         class TSubscriptionRepo
         {
             private:
-                TSubscriptionRepo();
-                TSubscriptionRepo(const TSubscriptionRepo&);
-                TSubscriptionRepo& operator=(const TSubscriptionRepo&);
-                ~TSubscriptionRepo();
+            TSubscriptionRepo();
+            TSubscriptionRepo(const TSubscriptionRepo&);
+            TSubscriptionRepo& operator=(const TSubscriptionRepo&);
+            ~TSubscriptionRepo();
             
             public:
-                static void test(const std::string& title);
+            static void test(const std::string& title);
         };
         class TSubscriptionService
         {
             private:
-                TSubscriptionService();
-                TSubscriptionService(const TSubscriptionService&);
-                TSubscriptionService& operator=(const TSubscriptionService&);
-                ~TSubscriptionService();
+            TSubscriptionService();
+            TSubscriptionService(const TSubscriptionService&);
+            TSubscriptionService& operator=(const TSubscriptionService&);
+            ~TSubscriptionService();
             
             public:
-                static void test(const std::string& title);
+            static void test(const std::string& title);
         };
-        class TChannelModeService
+        class TOperatorsRepo
         {
             private:
-                TChannelModeService();
-                TChannelModeService(const TChannelModeService&);
-                TChannelModeService& operator=(const TChannelModeService&);
-                ~TChannelModeService();
+            TOperatorsRepo();
+            TOperatorsRepo(const TOperatorsRepo&);
+            TOperatorsRepo& operator=(const TOperatorsRepo&);
+            ~TOperatorsRepo();
             
             public:
-                static void test(const std::string& title);
+            static void test(const std::string& title);
         };
-
+        class TOperateService
+        {
+            private:
+            TOperateService();
+            TOperateService(const TOperateService&);
+            TOperateService& operator=(const TOperateService&);
+            ~TOperateService();
+            
+            public:
+            static void test(const std::string& title);
+        };
+        class TChannel
+        {
+            private:
+                TChannel();
+                TChannel(const TChannel&);
+                TChannel& operator=(const TChannel&);
+                ~TChannel();
+                
+            public:
+                    static void test(const std::string& title);
+        };
 };
-
-
-

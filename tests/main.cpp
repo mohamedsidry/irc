@@ -18,5 +18,8 @@ int main(int argc, char *argv[])
     Tester::TChannelModeService::test("ChannelModes Service");
     Tester::TSubscriptionRepo::test("SubscriptionRepository");
     Tester::TSubscriptionService::test("SubscriptionService");
+    Tester::TOperatorsRepo::test("OperatorsRepository");
+    Tester::TOperateService::test("OperateService");
+    Tester::TChannel::test("FULL CHANNEL");
     return (EXIT_SUCCESS);
 }

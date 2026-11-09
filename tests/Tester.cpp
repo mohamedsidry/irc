@@ -142,8 +142,6 @@ void Tester::TChannelDataService::test(const std::string& title)
 
 
 
-
-
 void Tester::TChannelMode::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
@@ -239,86 +237,6 @@ void Tester::TChannelModeService::test(const std::string& title)
     std::cout << "channel mode  has i  : " << (service.hasMode('i') ? "YES" : "NO") << std::endl;
 
 }
-
-
-
-void Tester::TChannel::test(const std::string& title)
-{
-    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
-
-    try
-    {
-        std::cout << "Valid Channel " << std::endl;
-        Channel channel("#global", "general conversations");
-        std::cout << channel << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-    try
-    {
-        std::cout << "Channel name without # and &" << std::endl;
-        Channel channel("hometown", "general conversations");
-        std::cout << channel << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-
-    try
-    {
-        std::cout << "Channel name with Ctr+G" << std::endl;
-        Channel channel("#holy\aland", "general conversations");
-        std::cout << channel << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-    try
-    {
-        std::cout << "Channel name with comma" << std::endl;
-        Channel channel("#bla,bla", "general conversations");
-        std::cout << channel << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-    try
-    {
-        std::cout << "Channel name with spaces" << std::endl;
-        Channel channel("&holy land", "general conversations");
-        std::cout << channel << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-    try
-    {
-        std::cout << "Channel with Huge name" << std::endl;
-        std::string name = "#Huge_Channel";
-        for (int i = 0; i < 15; i++)
-            name += "-very-huge-channel"; 
-        Channel channel(name, "general conversations");
-        std::cout << channel << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-
-    try
-    {
-        std::cout << "Channel with Huge Topic" << std::endl;
-        std::string topic = "#Huge_Topic";
-        for (int i = 0; i < 15; i++)
-            topic += "this-is-very-huge-topic"; 
-        Channel channel("#Huge_Topic", topic);
-        std::cout << channel << std::endl;
-    }
-    catch(const IllegalArgumentException& e)
-    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
-
-}
-
 
 
 
@@ -453,3 +371,161 @@ void Tester::TSubscriptionService::test(const std::string& title)
     delete client2;
     delete client3;
 }
+
+
+void Tester::TOperatorsRepo::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+
+    OperatorsRepository repository;
+    Client *client1 = NULL;
+    Client *client2 = NULL;
+    client1 = new Client("Adam-AK47", "adambrands", "localhost", "debian-13");
+    client2 = new Client("Bob-1337", "bobmarlin", "localhost", "debian-12");
+    std::cout << "Number of operators : " << repository.getAllClient().size() << std::endl;
+    repository.addClient(client1);
+    std::cout << "Number of operators after adding 1st operator : " << repository.getAllClient().size() << std::endl;
+    repository.addClient(client2);
+    std::cout << "Number of operators after adding 2nd operator : " << repository.getAllClient().size() << std::endl;
+    
+    try
+    {
+        std::cout << "Check for operator that exist :" << std::endl;
+        std:: cout << "Is there a operator called Bob-1337 : " << (repository.hasClient("Bob-1337") ? "YES" : "NO") << std::endl;
+        std::cout << "Check for operator that is not exist :" << std::endl;
+        std:: cout << "Is there a operator called Bob-1338 : " << (repository.hasClient("Bob-1338") ? "YES" : "NO") << std::endl;
+
+    } catch (const IllegalArgumentException& e)
+    {
+        std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl; 
+    }
+
+    try
+    {
+        std::cout << "get operator that exist :" << std::endl;
+        repository.getClient("Bob-1337");
+        std::cout << "get operator that is not exist :" << std::endl;
+        repository.getClient("Bob-42");
+
+    } catch (const IllegalArgumentException& e)
+    {
+        std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl; 
+    }
+
+    try
+    {
+        std::cout << "remove operator that exist :" << std::endl;
+        repository.removeClient("Adam-AK47");
+        std::cout << "remove operator that is not exist :" << std::endl;
+        repository.removeClient("Bob-42");
+        std::cout << "Number of operators : " << repository.getAllClient().size() << std::endl;
+        std::cout << *repository.getClient("Bob-1337");
+
+    } catch (const IllegalArgumentException& e)
+    {
+        std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl; 
+    }
+    delete client1;
+    delete client2;
+}
+
+
+void Tester::TOperateService::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+    OperatorsRepository repository;
+    OperateService service(repository);
+
+    Client *client1 = NULL;
+    Client *client2 = NULL;
+    Client *client3 = NULL;
+    client1 = new Client("Adam-AK47", "adambrands", "localhost", "debian-13");
+    client2 = new Client("Bob-1337", "bobmarlin", "localhost", "debian-14");
+    client3 = new Client("Steve-HRV", "steve-harvy", "localhost", "debian-15");
+
+
+
+    try
+    {
+        service.startOperating(client1);
+        std::cout << *client1;
+        std::cout << client1->getNickName() << " is Operator : " << (service.isOperator(client1) ? "YES" : "NO") << std::endl;
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    try
+    {
+        service.startOperating(client2);
+        std::cout << *client2;
+        std::cout << client2->getNickName() << " is Operator : " << (service.isOperator(client2) ? "YES" : "NO") << std::endl;
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    
+    
+    try
+    {
+        std::cout << *client3;
+        std::cout << client3->getNickName() << " is Operator : " << (service.isOperator(client3) ? "YES" : "NO") << std::endl;
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try
+    {
+        service.startOperating(client3);
+        std::cout << *client3;
+        std::cout << client3->getNickName() << " is Operator : " << (service.isOperator(client3) ? "YES" : "NO") << std::endl;
+        service.stopOperating(client3);
+        std::cout << client3->getNickName() << " is Operator : " << (service.isOperator(client3->getNickName()) ? "YES" : "NO") << std::endl;
+
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+    try
+    {
+        service.startOperating(client1);
+        service.startOperating(client2);
+        service.startOperating(client3);
+        std::cout << client1->getNickName() << " is Operator : " << (service.isOperator(client1) ? "YES" : "NO") << std::endl;
+        std::cout << client2->getNickName() << " is Operator : " << (service.isOperator(client2) ? "YES" : "NO") << std::endl;
+        std::cout << client3->getNickName() << " is Operator : " << (service.isOperator(client3) ? "YES" : "NO") << std::endl;
+        std::cout << "Stop All Operators" << std::endl;
+        service.stopAllOperators();
+        std::cout << client1->getNickName() << " is Operator : " << (service.isOperator(client1) ? "YES" : "NO") << std::endl;
+        std::cout << client2->getNickName() << " is Operator : " << (service.isOperator(client2) ? "YES" : "NO") << std::endl;
+        std::cout << client3->getNickName() << " is Operator : " << (service.isOperator(client3) ? "YES" : "NO") << std::endl;
+
+
+
+    }
+    catch(const IllegalArgumentException& e){std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+
+
+    delete client1;
+    delete client2;
+    delete client3;
+}
+
+
+
+void Tester::TChannel::test(const std::string& title)
+{
+    std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+    Client *client1 = NULL;
+    Client *client2 = NULL;
+    Client *client3 = NULL;
+    client1 = new Client("Adam-AK47", "adambrands", "localhost", "debian-13");
+    client2 = new Client("Bob-1337", "bobmarlin", "localhost", "debian-14");
+    client3 = new Client("Steve-HRV", "steve-harvy", "localhost", "debian-15");
+
+    try
+    {
+        Channel channel("#global", "general conversations");
+        std::cout << channel << std::endl;
+    }
+    catch(const IllegalArgumentException& e)
+    {std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl;}
+    delete client1;
+    delete client2;
+    delete client3;
+}
+

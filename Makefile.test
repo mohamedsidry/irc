@@ -31,7 +31,9 @@ HPP =	include/main.hpp \
 		include/SubscriptionService.hpp \
 		include/ChannelModeService.hpp \
 		include/ChannelData.hpp \
-		include/ChannelDataService.hpp
+		include/ChannelDataService.hpp \
+		include/OperatorsRepository.hpp \
+		include/OperateService.hpp
 
 
 MAIN =	tests/main.cpp 
@@ -48,7 +50,9 @@ SRCS =	$(MAIN) \
 		srcs/server/services/SubscriptionService.cpp \
 		srcs/server/services/ChannelModeService.cpp \
 		srcs/server/models/ChannelData.cpp \
-		srcs/server/services/ChannelDataService.cpp
+		srcs/server/services/ChannelDataService.cpp \
+		srcs/server/services/OperateService.cpp \
+		srcs/server/repositories/OperatorsRepository.cpp
 
 OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 
