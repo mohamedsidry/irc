@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CHANNELMETADATASERVICE_HPP
+#define CHANNELMETADATASERVICE_HPP
 
 #include <string>
 
@@ -23,4 +24,6 @@ class ChannelMetaDataService
         const std::string& getChannelKey(void) const;
         size_t getChannelLimit(void)const;
 };
+
+#endif // CHANNELMETADATASERVICE_HPP
 

@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef CHANNELDATA_HPP
+#define CHANNELDATA_HPP
 
 #include <string>
 #include "ChannelMetaData.hpp"
@@ -31,4 +31,7 @@ class ChannelData
         const SubscriptionRepository& getSubscribers(void)const ;
         const OperatorsRepository&    getOperators(void)const ;
 };
+
+#endif // CHANNEL_HPP
+
 

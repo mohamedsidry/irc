@@ -21,5 +21,6 @@
 #include "Channel.hpp"
 #include "SubscriptionRepository.hpp"
 #include "SubscriptionService.hpp"
-#endif
+
+#endif  // MAIN_HPP
 

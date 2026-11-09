@@ -1,4 +1,5 @@
-#pragma once
+#ifndef OPERATORSREPOSITORY_HPP
+#define OPERATORSREPOSITORY_HPP
 
 
 #include <map>
@@ -26,4 +27,6 @@ class OperatorsRepository : public ISearchableClient, public IClientManagment
         Client* addClient(Client* client);
         const std::map<std::string, Client*>& getAllClient(void) const;
 };
+
+#endif // OPERATORSREPOSITORY_HPP
 

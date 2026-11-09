@@ -1,4 +1,5 @@
-#pragma once
+#ifndef OPERATESERVICE_HPP
+#define OPERATESERVICE_HPP
 
 #include <string>
 
@@ -23,3 +24,6 @@ class OperateService
         bool isOperator(const std::string& nickname) const;
         void stopAllOperators(void);
 };
+
+#endif // OPERATESERVICE_HPP
+

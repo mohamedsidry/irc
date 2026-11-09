@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ICLIENTMANAGMENT_HPP
+#define ICLIENTMANAGMENT_HPP
 
 #include <string>
 
@@ -12,4 +13,6 @@ class IClientManagment
         virtual void removeClient(const std::string& nickname) = 0;
         virtual void removeAll(void) = 0;
 };
+
+#endif // ICLIENTMANAGMENT_HPP
 

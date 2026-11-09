@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SUBSCRIPTIONSERVICE_HPP
+#define SUBSCRIPTIONSERVICE_HPP
 
 #include <string>
 
@@ -24,3 +25,6 @@ class SubscriptionService
         bool isSubscribed(const std::string& nickname) const;
         void unsubscribeAll(void);
 };
+
+#endif // SUBSCRIPTIONSERVICE_HPP
+

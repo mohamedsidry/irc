@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SUBSCRIPTIONREPOSITORY_HPP
+#define SUBSCRIPTIONREPOSITORY_HPP
 
 
 #include <map>
@@ -26,4 +27,6 @@ class SubscriptionRepository : public ISearchableClient, public IClientManagment
         Client* addClient(Client* client);
         const std::map<std::string, Client*>& getAllClient(void) const;
 };
+
+#endif // SUBSCRIPTIONREPOSITORY_HPP
 

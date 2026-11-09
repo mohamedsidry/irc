@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CLIENTREPOSITORY_HPP
+#define CLIENTREPOSITORY_HPP
 
 #include <map>
 #include <string>
@@ -26,3 +27,5 @@ class ClientRepository : public ISearchableClient, public IClientManagment
         const std::map<std::string, Client*>& getAllClient(void) const;
 };
 
+
+#endif // CLIENTREPOSITORY_HPP

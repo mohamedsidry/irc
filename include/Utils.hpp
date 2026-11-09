@@ -1,4 +1,5 @@
-#pragma once
+#ifndef UTILS_HPP
+#define UTILS_HPP
 
 #include <string>
 
@@ -18,3 +19,6 @@ class Utils
         static bool hasWhitespace(const std::string& str);
 
 };
+
+#endif // UTILS_HPP
+

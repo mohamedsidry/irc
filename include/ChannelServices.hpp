@@ -1,4 +1,6 @@
-#pragma once
+
+#ifndef CHANNELSERVICE_HPP
+#define CHANNELSERVICE_HPP
 
 #include "ChannelMetaDataService.hpp"
 #include "ChannelModeService.hpp"
@@ -28,4 +30,6 @@ class ChannelServices
         const SubscriptionService& getSubscriptionService(void)const ;
         const OperateService& getOperateService(void)const ;
 };
+
+#endif // CHANNELSERVICE_HPP
 

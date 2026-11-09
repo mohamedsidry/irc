@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CLIENTSERVICE_HPP
+#define CLIENTSERVICE_HPP
 
 #include <string>
 
@@ -19,3 +20,7 @@ class ClientService
         void removeClient(const std::string& nickname);
         void removeAll(void);
 };
+
+
+#endif  // CLIENTSERVICE_HPP
+

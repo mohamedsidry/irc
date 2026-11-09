@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CHANNELMODE_HPP
+#define CHANNELMODE_HPP
 
 #include <string>
 #include "IllegalArgumentException.hpp"
@@ -21,4 +22,7 @@ class ChannelMode
         void removeFlag(unsigned char c);
         bool hasFlag(unsigned char option) const;
 };
+
+
+#endif // CHANNELMODE_HPP
 

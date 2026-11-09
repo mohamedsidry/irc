@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CHANNEL_HPP
+#define CHANNEL_HPP
+
 
 #include <string>
 #include <cstddef>
@@ -33,3 +35,6 @@ class Channel
 };
 
 std::ostream& operator<<(std::ostream& os, const Channel& ref);
+
+#endif // CHANNEL_HPP
+

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TESTER_HPP
+#define TESTER_HPP
 
 #include "test.hpp"
 
@@ -137,3 +138,7 @@ class Tester
                     static void test(const std::string& title);
         };
 };
+
+
+#endif // TESTER_HPP
+

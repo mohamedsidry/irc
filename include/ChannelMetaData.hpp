@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CHANNELMETADATA_HPP
+#define CHANNELMETADATA_HPP
 
 #include <string>
 #include <iostream>
@@ -30,4 +31,6 @@ class ChannelMetaData
 
 
 std::ostream& operator<<(std::ostream&, const ChannelMetaData& ref);
+
+#endif // CHANNELMETADATA_HPP
 

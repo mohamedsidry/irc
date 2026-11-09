@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CHANNELMODESERVICE_HPP
+#define CHANNELMODESERVICE_HPP
+
 
 #include <string>
 #include "ChannelMode.hpp"
@@ -20,4 +22,6 @@ class ChannelModeService
         void    removeMode(unsigned char option);
         bool    hasMode(unsigned char option) const;
 };
+
+#endif // CHANNELMODESERVICE_HPP
 
