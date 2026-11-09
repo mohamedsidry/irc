@@ -1,32 +1,45 @@
-#include "../../../include/Channel.hpp"
-#include "../../../include/Utils.hpp"
-#include "../../../include/IllegalArgumentException.hpp"
+#include "Channel.hpp"
 
 const std::string Channel::DEFAULT_KEY = "leet@1337";
 const std::string Channel::DEFAULT_MODE = "t";
 const std::string Channel::SUPPORTED_MODES = "itkol";
 
 Channel::Channel(const std::string& name, const std::string& topic):
-data(name, topic, Channel::DEFAULT_KEY, Channel::DEFAULT_SUBSCRIBERS_LIMIT),
-dataService(data),
-mode(Channel::DEFAULT_MODE),
-modeService(mode),
-subscribers(),
-subsService(subscribers),
-operators(),
-operateService(operators)
+data(name, topic, DEFAULT_KEY, DEFAULT_SUBSCRIBERS_LIMIT, DEFAULT_MODE),
+services(data)
 {}
 
+Channel::~Channel()
+{}
 
-Channel::~Channel(){}
+ChannelServices& Channel::getServices(void)
+{
+    return services;
+}
 
+const ChannelServices& Channel::getServices(void) const
+{
+    return services;
+}
 
 std::ostream& operator<<(std::ostream& os, const Channel& channel)
 {
-    os << "CHANNEL NAME : " << channel.dataService.getChannelName() << std::endl;
-    os << "CHANNEL TOPIC : " << channel.dataService.getChannelTopic() << std::endl;
-    os << "CHANNEL LIMITS : " << channel.dataService.getChannelLimit() << std::endl;
-    os << "CHANNEL KEY  : " << channel.dataService.getChannelKey() << std::endl;
-    os << "CHANNEL MODES  : " << channel.modeService.getChannelModes();
+    const ChannelServices& services = channel.getServices();
+
+    os << "CHANNEL NAME   : "
+       << services.getMetaDataService().getChannelName() << '\n';
+
+    os << "CHANNEL TOPIC  : "
+       << services.getMetaDataService().getChannelTopic() << '\n';
+
+    os << "CHANNEL KEY    : "
+       << services.getMetaDataService().getChannelKey() << '\n';
+
+    os << "CHANNEL LIMITS : "
+       << services.getMetaDataService().getChannelLimit() << '\n';
+
+    os << "CHANNEL MODES  : "
+       << services.getModeService().getChannelModes() << '\n';
+
     return os;
 }

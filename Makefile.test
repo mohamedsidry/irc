@@ -33,7 +33,9 @@ HPP =	include/main.hpp \
 		include/ChannelMetaData.hpp \
 		include/ChannelMetaDataService.hpp \
 		include/OperatorsRepository.hpp \
-		include/OperateService.hpp
+		include/OperateService.hpp \
+		include/ChannelData.hpp \
+		include/ChannelServices.hpp
 
 
 MAIN =	tests/main.cpp 
@@ -52,7 +54,9 @@ SRCS =	$(MAIN) \
 		srcs/server/models/ChannelMetaData.cpp \
 		srcs/server/services/ChannelMetaDataService.cpp \
 		srcs/server/services/OperateService.cpp \
-		srcs/server/repositories/OperatorsRepository.cpp
+		srcs/server/repositories/OperatorsRepository.cpp \
+		srcs/server/models/ChannelData.cpp \
+		srcs/server/services/ChannelServices.cpp
 
 OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 
