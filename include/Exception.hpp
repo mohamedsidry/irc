@@ -12,6 +12,6 @@ class Exception : public std::runtime_error
         std::runtime_error(message){};
 };
 
-#endif  // EXCEPTION_HPP
+#endif // EXCEPTION_HPP
 
 

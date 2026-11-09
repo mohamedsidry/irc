@@ -32,6 +32,6 @@ class ChannelData
         const OperatorsRepository&    getOperators(void)const ;
 };
 
-#endif // CHANNEL_HPP
+#endif // CHANNELDATA_HPP
 
 

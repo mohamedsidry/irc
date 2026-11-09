@@ -22,5 +22,5 @@
 #include "SubscriptionRepository.hpp"
 #include "SubscriptionService.hpp"
 
-#endif  // MAIN_HPP
+#endif // MAIN_HPP
 

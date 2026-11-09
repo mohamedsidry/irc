@@ -22,5 +22,5 @@ class ClientService
 };
 
 
-#endif  // CLIENTSERVICE_HPP
+#endif // CLIENTSERVICE_HPP
 

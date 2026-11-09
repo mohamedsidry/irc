@@ -49,5 +49,5 @@ class Client
 std::ostream& operator<<(std::ostream& os, const Client& client);
 
 
-#endif  // CLIENT_HPP
+#endif // CLIENT_HPP
 
