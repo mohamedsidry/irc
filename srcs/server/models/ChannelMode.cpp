@@ -1,5 +1,5 @@
-#include "../../../include/ChannelMode.hpp"
-#include "../../../include/Utils.hpp"
+#include "ChannelMode.hpp"
+#include "Utils.hpp"
 
 ChannelMode::ChannelMode(const std::string& flags):
 flags(flags)

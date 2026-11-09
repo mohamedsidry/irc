@@ -1,4 +1,4 @@
-#include "../../../include/ChannelData.hpp"
+#include "ChannelData.hpp"
 
 
 ChannelData::ChannelData(const std::string& metaName, const std::string& metaTopic, const std::string& metaKey, size_t metaLimit, const std::string& mode):

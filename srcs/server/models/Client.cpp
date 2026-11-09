@@ -1,4 +1,4 @@
-#include "../../../include/Client.hpp"
+#include "Client.hpp"
 
 size_t Client::NICKNAME_MAX_SIZE = 9;
 
