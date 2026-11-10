@@ -15,12 +15,14 @@
 #include "Exception.hpp"
 #include "IllegalArgumentException.hpp"
 #include "Client.hpp"
-#include "ClientRepository.hpp"
-#include "ClientService.hpp"
+#include "ClientsRepository.hpp"
+#include "ClientsService.hpp"
 #include "ChannelMode.hpp"
 #include "Channel.hpp"
-#include "SubscriptionRepository.hpp"
-#include "SubscriptionService.hpp"
+#include "SubscribersRepository.hpp"
+#include "SubscribersService.hpp"
+#include "ModeratorsRepository.hpp"
+#include "ModeratorsService.hpp"
 
 #endif // MAIN_HPP
 

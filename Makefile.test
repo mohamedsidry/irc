@@ -14,51 +14,58 @@ RESET = \033[0m
 
 # SOURCES
 BUILD_DIR = build.test
-HPP =	include/main.hpp \
-		include/test.hpp \
-		include/Utils.hpp \
-		include/AUser.hpp \
+
+#include/ChannelData.hpp \
+#include/Channel.hpp \
+#include/ChannelMetaData.hpp \
+#include/ChannelMetaDataService.hpp \
+#include/ChannelMode.hpp \
+#include/ChannelModeService.hpp \
+#include/ChannelServices.hpp \
+
+HPP =	include/AUser.hpp \
 		include/Client.hpp \
+		include/ClientsRepository.hpp \
+		include/ClientsService.hpp \
+		include/Config.hpp \
 		include/Exception.hpp \
 		include/IllegalArgumentException.hpp \
+		include/IUsersManagment.hpp \
+		include/main.hpp \
+		include/Moderator.hpp \
+		include/ModeratorsRepository.hpp \
+		include/ModeratorsService.hpp \
+		include/Subscriber.hpp \
+		include/SubscribersRepository.hpp \
+		include/SubscribersService.hpp \
 		include/Tester.hpp \
-		include/ClientRepository.hpp \
-        include/IClientManagment.hpp \
-        include/ISearchableClient.hpp \
-		include/ClientService.hpp \
-		include/ChannelMode.hpp \
-		include/Channel.hpp \
-		include/SubscriptionRepository.hpp \
-		include/SubscriptionService.hpp \
-		include/ChannelModeService.hpp \
-		include/ChannelMetaData.hpp \
-		include/ChannelMetaDataService.hpp \
-		include/OperatorsRepository.hpp \
-		include/OperateService.hpp \
-		include/ChannelData.hpp \
-		include/ChannelServices.hpp
-
+		include/test.hpp \
+		include/Utils.hpp
 
 MAIN =	tests/main.cpp 
 
+#srcs/server/models/ChannelData.cpp \
+#srcs/server/models/Channel.cpp \
+#srcs/server/models/ChannelMetaData.cpp \
+#srcs/server/models/ChannelMode.cpp \
+#srcs/server/services/ChannelMetaDataService.cpp \
+#srcs/server/services/ChannelModeService.cpp \
+#srcs/server/services/ChannelServices.cpp \
+
 SRCS =	$(MAIN) \
-		tests/Tester.cpp \
 		srcs/helpers/Utils.cpp \
+		srcs/server/Config.cpp \
 		srcs/server/models/AUser.cpp \
 		srcs/server/models/Client.cpp \
-		srcs/server/repositories/ClientRepository.cpp \
-		srcs/server/services/ClientService.cpp \
-		srcs/server/models/ChannelMode.cpp \
-		srcs/server/models/Channel.cpp \
-		srcs/server/repositories/SubscriptionRepository.cpp \
-		srcs/server/services/SubscriptionService.cpp \
-		srcs/server/services/ChannelModeService.cpp \
-		srcs/server/models/ChannelMetaData.cpp \
-		srcs/server/services/ChannelMetaDataService.cpp \
-		srcs/server/services/OperateService.cpp \
-		srcs/server/repositories/OperatorsRepository.cpp \
-		srcs/server/models/ChannelData.cpp \
-		srcs/server/services/ChannelServices.cpp
+		srcs/server/models/Moderator.cpp \
+		srcs/server/models/Subscriber.cpp \
+		srcs/server/repositories/ClientsRepository.cpp \
+		srcs/server/repositories/ModeratorsRepository.cpp \
+		srcs/server/repositories/SubscribersRepository.cpp \
+		srcs/server/services/ClientsService.cpp \
+		srcs/server/services/ModeratorsService.cpp \
+		srcs/server/services/SubscribersService.cpp \
+		tests/Tester.cpp
 
 OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 

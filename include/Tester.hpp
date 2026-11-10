@@ -16,24 +16,24 @@ class Tester
             public:
                 static void test(const std::string& title, const std::string& nickname, const std::string& username, const std::string& hostname, const std::string& hostuser);
         };
-        class TClientRepo
+        class TClientsRepo
         {
             private:
-                TClientRepo();
-                TClientRepo(const TClientRepo&);
-                TClientRepo& operator=(const TClientRepo&);
-                ~TClientRepo();
+                TClientsRepo();
+                TClientsRepo(const TClientsRepo&);
+                TClientsRepo& operator=(const TClientsRepo&);
+                ~TClientsRepo();
             
             public:
                 static void test(const std::string& title);
         };
-        class TClientService
+        class TClientsService
         {
             private:
-                TClientService();
-                TClientService(const TClientService&);
-                TClientService& operator=(const TClientService&);
-                ~TClientService();
+                TClientsService();
+                TClientsService(const TClientsService&);
+                TClientsService& operator=(const TClientsService&);
+                ~TClientsService();
             
             public:
                 static void test(const std::string& title);
@@ -82,46 +82,46 @@ class Tester
             public:
                 static void test(const std::string& title);
         };
-        class TSubscriptionRepo
+        class TSubscribersRepo
         {
             private:
-            TSubscriptionRepo();
-            TSubscriptionRepo(const TSubscriptionRepo&);
-            TSubscriptionRepo& operator=(const TSubscriptionRepo&);
-            ~TSubscriptionRepo();
+            TSubscribersRepo();
+            TSubscribersRepo(const TSubscribersRepo&);
+            TSubscribersRepo& operator=(const TSubscribersRepo&);
+            ~TSubscribersRepo();
             
             public:
             static void test(const std::string& title);
         };
-        class TSubscriptionService
+        class TSubscribersService
         {
             private:
-            TSubscriptionService();
-            TSubscriptionService(const TSubscriptionService&);
-            TSubscriptionService& operator=(const TSubscriptionService&);
-            ~TSubscriptionService();
+            TSubscribersService();
+            TSubscribersService(const TSubscribersService&);
+            TSubscribersService& operator=(const TSubscribersService&);
+            ~TSubscribersService();
             
             public:
             static void test(const std::string& title);
         };
-        class TOperatorsRepo
+        class TModeratorsRepo
         {
             private:
-            TOperatorsRepo();
-            TOperatorsRepo(const TOperatorsRepo&);
-            TOperatorsRepo& operator=(const TOperatorsRepo&);
-            ~TOperatorsRepo();
+            TModeratorsRepo();
+            TModeratorsRepo(const TModeratorsRepo&);
+            TModeratorsRepo& operator=(const TModeratorsRepo&);
+            ~TModeratorsRepo();
             
             public:
             static void test(const std::string& title);
         };
-        class TOperateService
+        class TModeratorsService
         {
             private:
-            TOperateService();
-            TOperateService(const TOperateService&);
-            TOperateService& operator=(const TOperateService&);
-            ~TOperateService();
+            TModeratorsService();
+            TModeratorsService(const TModeratorsService&);
+            TModeratorsService& operator=(const TModeratorsService&);
+            ~TModeratorsService();
             
             public:
             static void test(const std::string& title);

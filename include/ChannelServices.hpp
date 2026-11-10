@@ -4,8 +4,8 @@
 
 #include "ChannelMetaDataService.hpp"
 #include "ChannelModeService.hpp"
-#include "SubscriptionService.hpp"
-#include "OperateService.hpp"
+#include "SubscribersService.hpp"
+#include "ModeratorsService.hpp"
 #include "ChannelData.hpp"
 
 class ChannelServices
@@ -13,8 +13,8 @@ class ChannelServices
     private:
         ChannelMetaDataService  metaDataService;
         ChannelModeService      modeService;
-        SubscriptionService     subscriptionService;
-        OperateService          operateService;
+        SubscribersService     subscribersService;
+        ModeratorsService          moderatorsService;
         
         ChannelServices(const ChannelServices&);
         ChannelServices& operator=(const ChannelServices&);
@@ -23,13 +23,13 @@ class ChannelServices
 
         ChannelMetaDataService& getMetaDataService(void);
         ChannelModeService& getModeService(void);
-        SubscriptionService& getSubscriptionService(void);
-        OperateService& getOperateService(void);
+        SubscribersService& getSubscribersService(void);
+        ModeratorsService& getModeratorsService(void);
 
         const ChannelMetaDataService& getMetaDataService(void)const ;
         const ChannelModeService& getModeService(void)const ;
-        const SubscriptionService& getSubscriptionService(void)const ;
-        const OperateService& getOperateService(void)const ;
+        const SubscribersService& getSubscribersService(void)const ;
+        const ModeratorsService& getModeratorsService(void)const ;
 };
 
 #endif // CHANNELSERVICES_HPP

@@ -60,3 +60,13 @@ bool AUser::operator!=(const AUser& other) const
 {
     return (!(*this == other));
 }
+
+
+std::ostream& operator<<(std::ostream& os, const AUser& user)
+{
+    os << "CLIENT NICKNAME : " << user.getNickName() << "\n";
+    os << "CLIENT USERNAME : " << user.getUserName() << "\n";
+    os << "CLIENT HOSTNAME : " << user.getHostName() << "\n";
+    os << "CLIENT HOSTUSER : " << user.getHostUser() << "\n";
+    return os;
+}

@@ -46,5 +46,9 @@ class AUser
         bool operator==(const AUser& other) const;
         bool operator!=(const AUser& other) const;
 };
+
+
+std::ostream& operator<<(std::ostream& os, const AUser& user);
+
 #endif // AUser_HPP
 

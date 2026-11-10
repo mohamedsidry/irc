@@ -25,8 +25,8 @@ Moderator::~Moderator(){}
 
 void Moderator::showInfo(void) const
 {
-    std::cout << "MODERATOR NICKNAME : " << getNickName() << "\n"
-    std::cout << "MODERATOR USERNAME : " << getUserName() << "\n"
-    std::cout << "MODERATOR HOSTNAME : " << getHostName() << "\n"
-    std::cout << "MODERATOR HOSTUSER : " << getHostUser() << "\n"
+    std::cout << "MODERATOR NICKNAME : " << getNickName() << "\n";
+    std::cout << "MODERATOR USERNAME : " << getUserName() << "\n";
+    std::cout << "MODERATOR HOSTNAME : " << getHostName() << "\n";
+    std::cout << "MODERATOR HOSTUSER : " << getHostUser() << "\n";
 }
