@@ -1,38 +1,19 @@
 #include "Client.hpp"
 
-size_t Client::NICKNAME_MAX_SIZE = 9;
 
-Client::Client(){}
+Client::Client(const std::string& nickname, const std::string& username, const std::string& hostname, const std::string& hostuser):
+AUser(nickname, username, hostname, hostuser)
+{}
 
 Client::Client(const Client& copy):
-nickName(copy.nickName),
-userName(copy.userName),
-hostName(copy.hostName),
-hostUser(copy.hostUser)
-{
-}
-
-Client::Client(const std::string& nn, const std::string& un, const std::string& hn, const std::string& hu)
-{
-    if (nn.empty() || Utils::isAllWhitespace(nn))
-        throw IllegalArgumentException("Empty nickname");
-    if (nn.size() > Client::NICKNAME_MAX_SIZE)
-        throw IllegalArgumentException("Too Long nickname " + nn);
-    this->nickName = nn;
-    this->userName = un;
-    this->hostName = hn;
-    this->hostUser = hu;
-}
-
+AUser(copy)
+{}
 
 Client& Client::operator=(const Client& other)
 {
     if (this != &other)
     {
-        this->nickName = other.nickName;
-        this->userName = other.userName;
-        this->hostName = other.hostName;
-        this->hostUser = other.hostUser;
+        AUser::operator=(other);
     }
     return *this;
 }
@@ -40,49 +21,10 @@ Client& Client::operator=(const Client& other)
 
 Client::~Client(){}
 
-
-
-/** 
-* @note getters .
-*/
-
-const std::string& Client::getNickName(void) const
+void Client::showInfo(void) const
 {
-    return this->nickName;
-}
-
-const std::string& Client::getUserName(void) const
-{
-    return this->userName;
-}
-
-const std::string& Client::getHostName(void) const
-{
-    return this->hostName;
-}
-const std::string& Client::getHostUser(void) const
-{
-    return this->hostUser;
-}
-
-
-bool Client::operator==(const Client& other) const
-{
-    return this->nickName == other.nickName ;
-}
-
-bool Client::operator!=(const Client& other) const
-{
-    return (!(*this == other));
-}
-
-
-
-std::ostream& operator<<(std::ostream& os, const Client& client)
-{
-    os << "NICK NAME : " << client.getNickName() << std::endl;
-    os << "USER NAME : " << client.getUserName() << std::endl;
-    os << "HOST NAME : " << client.getHostName() << std::endl;
-    os << "HOST USER : " << client.getHostUser() << std::endl;
-    return os;
+    std::cout << "CLIENT NICKNAME : " << getNickName() << "\n";
+    std::cout << "CLIENT USERNAME : " << getUserName() << "\n";
+    std::cout << "CLIENT HOSTNAME : " << getHostName() << "\n";
+    std::cout << "CLIENT HOSTUSER : " << getHostUser() << "\n";
 }

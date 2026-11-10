@@ -17,6 +17,7 @@ BUILD_DIR = build.test
 HPP =	include/main.hpp \
 		include/test.hpp \
 		include/Utils.hpp \
+		include/AUser.hpp \
 		include/Client.hpp \
 		include/Exception.hpp \
 		include/IllegalArgumentException.hpp \
@@ -43,6 +44,7 @@ MAIN =	tests/main.cpp
 SRCS =	$(MAIN) \
 		tests/Tester.cpp \
 		srcs/helpers/Utils.cpp \
+		srcs/server/models/AUser.cpp \
 		srcs/server/models/Client.cpp \
 		srcs/server/repositories/ClientRepository.cpp \
 		srcs/server/services/ClientService.cpp \
