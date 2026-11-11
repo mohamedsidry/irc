@@ -1,4 +1,5 @@
 #include "Subscriber.hpp"
+#include <iostream>
 
 
 
@@ -24,9 +25,6 @@ Subscriber::~Subscriber(){}
 
 void Subscriber::showInfo(void) const
 {
-    std::cout << "SUBSCRIBER NICKNAME : " << getNickName() << "\n";
-    std::cout << "SUBSCRIBER USERNAME : " << getUserName() << "\n";
-    std::cout << "SUBSCRIBER HOSTNAME : " << getHostName() << "\n";
-    std::cout << "SUBSCRIBER HOSTUSER : " << getHostUser() << "\n";
+    std::cout << *this;
 }
 

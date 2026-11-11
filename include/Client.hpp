@@ -10,7 +10,7 @@ class Client : public AUser
         Client(const std::string& nickname, const std::string& username, const std::string& hostname, const std::string& hostuser);
         Client(const Client& copy);
         Client& operator=(const Client& other);
-        ~Client();
+        virtual ~Client();
         void showInfo(void) const;
 };
 

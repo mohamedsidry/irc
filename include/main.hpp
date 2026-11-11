@@ -23,6 +23,6 @@
 #include "SubscribersService.hpp"
 #include "ModeratorsRepository.hpp"
 #include "ModeratorsService.hpp"
-
+#include "IUserFactory.hpp"
 #endif // MAIN_HPP
 

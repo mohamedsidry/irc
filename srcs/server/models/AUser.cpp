@@ -1,13 +1,20 @@
+#include <ostream>
 #include "AUser.hpp"
-
-
+#include "Config.hpp"
+#include "Utils.hpp"
+#include "IllegalArgumentException.hpp"
 
 AUser::AUser(const std::string& nickname, const std::string& username, const std::string& hostname, const std::string& hostuser):
 nickName(nickname),
 userName(username),
 hostName(hostname),
 hostUser(hostuser)
-{}
+{
+    if (nickname.empty() || Utils::isAllWhitespace(nickname))
+        throw IllegalArgumentException("Empty nickname");
+    if (nickname.size() > Config::USER_NICKNAME_LIMIT)
+        throw IllegalArgumentException("Too Long nickname " + nickname);
+}
 
 
 
@@ -45,10 +52,15 @@ const std::string& AUser::getUserName(void) const {return this->userName;}
 const std::string& AUser::getHostName(void) const {return this->hostName;}
 const std::string& AUser::getHostUser(void) const {return this->hostUser;}
 
-void AUser::setNickName(const std::string& nickname){this->nickName = nickname;}
+void AUser::setNickName(const std::string& nickname)
+{
+    if (nickname.empty() || Utils::isAllWhitespace(nickname))
+        throw IllegalArgumentException("Empty nickname");
+    if (nickname.size() > Config::USER_NICKNAME_LIMIT)
+        throw IllegalArgumentException("Too Long nickname " + nickname);
+    this->nickName = nickname;
+}
 void AUser::setUserName(const std::string& username){this->userName = username;}
-void AUser::setHostName(const std::string& hostname){this->hostName = hostname;}
-void AUser::setHostUser(const std::string& hostuser){this->hostUser = hostuser;}
 
 
 bool AUser::operator==(const AUser& other) const

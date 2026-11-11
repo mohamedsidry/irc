@@ -4,17 +4,17 @@
 
 #include <string>
 class Moderator; // Forward declaration
-class ModeratorsRepository; // Forward declaration
+class IUserManagement; // Forward declaration
 
 
 class ModeratorsService
 {
     private:
-        ModeratorsRepository& repository;    
+        IUserManagement& repository;    
         ModeratorsService(const ModeratorsService& copy); // delete
         ModeratorsService& operator=(const ModeratorsService& other); // delete
     public:
-        ModeratorsService(ModeratorsRepository& repo);
+        ModeratorsService(IUserManagement& repo);
 
         void addModerator(Moderator *moderator);
         void removeModerator(const std::string& nickname);

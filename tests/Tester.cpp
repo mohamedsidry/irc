@@ -22,9 +22,9 @@ void Tester::TClientsRepo::test(const std::string& title)
     try
     {
         ClientsRepository repository;
-        AUser *client1 = repository.create("Adam-AK47", "adambrands", "localhost", "debian-13");
+        AUser *client1 = IUserFactory::createUser("Client", "Adam-AK47", "adambrands", "localhost", "debian-13");
         std::cout << *client1 << std::endl;
-        AUser *client2 = repository.create("Bob-1337", "bobmarlin", "localhost", "debian-12");
+        AUser *client2 = IUserFactory::createUser("Client", "Bob-1337", "bobmarlin", "localhost", "debian-12");
         std::cout << *client2 << std::endl;
 
         std::cout << "Number of clients : " << repository.size() << std::endl;
@@ -119,12 +119,12 @@ void Tester::TClientsService::test(const std::string& title)
 void Tester::TSubscribersRepo::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+    AUser *subscriber1 = new Subscriber("Adam-AK47", "adambrands", "localhost", "debian-13");
+    AUser *subscriber2 = new Subscriber("Bob-1337", "bobmarlin", "localhost", "debian-12");
     try
     {
         SubscribersRepository repository;
-        AUser *subscriber1 = new Subscriber("Adam-AK47", "adambrands", "localhost", "debian-13");
         std::cout << *subscriber1 << std::endl;
-        AUser *subscriber2 = new Subscriber("Bob-1337", "bobmarlin", "localhost", "debian-12");
         std::cout << *subscriber2 << std::endl;
 
         std::cout << "Number of subscribers : " << repository.size() << std::endl;
@@ -145,13 +145,14 @@ void Tester::TSubscribersRepo::test(const std::string& title)
         std::cout << "Number of subscribers after adding random subscriber : " << repository.size() << std::endl;
         repository.rename(subscriber2->getNickName(), "Subscriber");
         std::cout << *dynamic_cast<AUser*>(subscriber2) << std::endl;
-        delete subscriber1;
-        delete subscriber2;
+
 
     } catch(const IllegalArgumentException& e)
     {
         std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl; 
     }
+    delete subscriber1;
+    delete subscriber2;
 }
 
 void Tester::TSubscribersService::test(const std::string& title)
@@ -209,12 +210,12 @@ void Tester::TSubscribersService::test(const std::string& title)
 void Tester::TModeratorsRepo::test(const std::string& title)
 {
     std::cout << "\033[1;33m" << "TEST : " << title << "\033[0m"<< std::endl;
+    Moderator *moderator1 = new Moderator("Adam-AK47", "adambrands", "localhost", "debian-13");
+    Moderator *moderator2 = new Moderator("Bob-1337", "bobmarlin", "localhost", "debian-12");
     try
     {
         ModeratorsRepository repository;
-        Moderator *moderator1 = new Moderator("Adam-AK47", "adambrands", "localhost", "debian-13");
         std::cout << *dynamic_cast<AUser*>(moderator1) << std::endl;
-        Moderator *moderator2 = new Moderator("Bob-1337", "bobmarlin", "localhost", "debian-12");
         std::cout << *dynamic_cast<AUser*>(moderator2) << std::endl;
 
         std::cout << "Number of moderators : " << repository.size() << std::endl;
@@ -235,13 +236,13 @@ void Tester::TModeratorsRepo::test(const std::string& title)
         std::cout << "Number of moderators after adding random moderator : " << repository.size() << std::endl;
         repository.rename(moderator2->getNickName(), "Moderator");
         std::cout << *dynamic_cast<AUser*>(moderator2) << std::endl;
-        delete moderator1;
-        delete moderator2;
-
+        
     } catch(const IllegalArgumentException& e)
     {
         std::cerr << "\033[1;31m" << e.what() << "\033[0m" << std::endl; 
     }
+    delete moderator1;
+    delete moderator2;
 }
 
 void Tester::TModeratorsService::test(const std::string& title)

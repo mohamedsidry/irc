@@ -4,16 +4,16 @@
 #include <string>
 
 class Client; // Forward declaration
-class ClientsRepository; // Forward declaration
+class IUserManagement; // Forward declaration
 
 class ClientsService
 {
     private:
-        ClientsRepository& repository;    
+        IUserManagement& repository;    
         ClientsService(const ClientsService& copy); // delete
         ClientsService& operator=(const ClientsService& other); // delete
     public:
-        ClientsService(ClientsRepository& repository);
+        ClientsService(IUserManagement& repository);
         bool hasClient(const std::string& nickname) const;
         void addClient(const std::string& nickname, const std::string& username, const std::string& hostname, const std::string& hostuser);
         void removeClient(const std::string& nickname);

@@ -43,22 +43,19 @@ void SubscribersRepository::remove(const std::string& nickname)
 }
 
 
-void SubscribersRepository::rename(
-    const std::string& oldNickName,
-    const std::string& newNickName)
+bool SubscribersRepository::rename( const std::string& oldNickName, const std::string& newNickName)
 {
     SubscribersRepository::iterator target = subscribers.find(oldNickName);
+    if (oldNickName == newNickName)
+        return true;
+    if (target == subscribers.end())
+        return false;
+    Subscriber* subscriber = target->second;
+    subscribers.insert(std::make_pair(newNickName, subscriber));
+    subscriber->setNickName(newNickName);
+    subscribers.erase(target);
+    return true;
 
-    if (target != subscribers.end())
-    {
-        Subscriber* subscriber = target->second;
-
-        subscribers.erase(target);
-
-        subscriber->setNickName(newNickName);
-
-        subscribers.insert(std::make_pair(newNickName, subscriber));
-    }
 }
 bool SubscribersRepository::has(const std::string& nickname) const
 {

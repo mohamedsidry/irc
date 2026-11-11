@@ -1,11 +1,11 @@
 #include "Subscriber.hpp"
 #include "SubscribersService.hpp"
-#include "SubscribersRepository.hpp"
+#include "IUserManagement.hpp"
 #include "IllegalArgumentException.hpp"
 #include "Utils.hpp"
 #include "Config.hpp"
 
-SubscribersService::SubscribersService(SubscribersRepository& repo):
+SubscribersService::SubscribersService(IUserManagement& repo):
 repository(repo)
 {}
 

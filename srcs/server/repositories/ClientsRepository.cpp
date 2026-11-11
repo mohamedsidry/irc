@@ -8,46 +8,25 @@
 ClientsRepository::ClientsRepository()
 {}
 
-ClientsRepository::ClientsRepository(const ClientsRepository& copy)
-{
-    for (ClientsRepository::const_iterator it = copy.clients.begin(); it != copy.clients.end(); ++it)
-    {
-        clients[it->first] = new Client(*it->second);
-    }
-}
-
-ClientsRepository& ClientsRepository::operator=(const ClientsRepository& other)
-{
-    if (this != &other)
-    {
-        for (ClientsRepository::iterator it = clients.begin(); it != clients.end(); ++it)
-            delete it->second;
-        clients.clear();
-        for (ClientsRepository::const_iterator it = other.clients.begin(); it != other.clients.end(); ++it)
-            clients[it->first] = new Client(*it->second);
-    }
-    return *this;
-}
-
 
 ClientsRepository::~ClientsRepository()
 {
-    for (ClientsRepository::iterator it = clients.begin(); it != clients.end(); ++it)
+    for (iterator it = clients.begin(); it != clients.end(); ++it)
         delete it->second;
 }
 
-
-AUser* ClientsRepository::create(const std::string& nickname, const std::string& username, const std::string& hostname, const std::string& hostuser) const
-{
-    return new Client(nickname, username, hostname, hostuser);
-}
-
-
+/**
+ * @brief Adds a user to the repository.
+ *
+ * @param user Pointer to the user.
+ * @note Ownership transfers to the repository
+ *       only if insertion succeeds.
+ */
 void ClientsRepository::add(AUser* user)
 {
     Client *client = NULL;
     if (!user)
-        return;
+        throw IllegalArgumentException("Null client");
     client = dynamic_cast<Client*>(user);
     if (!client)
         throw IllegalArgumentException("Adding user to clients which is not of type Client");
@@ -57,32 +36,26 @@ void ClientsRepository::add(AUser* user)
 
 void ClientsRepository::remove(const std::string& nickname)
 {
-    ClientsRepository::iterator it = clients.find(nickname);
-
-    if (it != clients.end())
-    {
-        delete it->second;
-        clients.erase(it);
-    }
+    iterator it = clients.find(nickname);
+    if (it == clients.end())
+        return ;
+    delete it->second;
+    clients.erase(it);
 }
 
 
-void ClientsRepository::rename(
-    const std::string& oldNickName,
-    const std::string& newNickName)
+bool ClientsRepository::rename( const std::string& oldNickName, const std::string& newNickName)
 {
-    ClientsRepository::iterator target = clients.find(oldNickName);
-
-    if (target != clients.end())
-    {
-        Client* client = target->second;
-
-        clients.erase(target);
-
-        client->setNickName(newNickName);
-
-        clients.insert(std::make_pair(newNickName, client));
-    }
+    iterator target = clients.find(oldNickName);
+    if (oldNickName == newNickName)
+        return true;
+    if (target == clients.end())
+        return false;
+    Client* client = target->second;
+    clients.insert(std::make_pair(newNickName, client));
+    client->setNickName(newNickName);
+    clients.erase(target);
+    return true;
 }
 
 bool ClientsRepository::has(const std::string& nickname) const

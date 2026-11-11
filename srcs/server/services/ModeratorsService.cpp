@@ -1,11 +1,11 @@
 #include "Moderator.hpp"
 #include "ModeratorsService.hpp"
-#include "ModeratorsRepository.hpp"
+#include "IUserManagement.hpp"
 #include "IllegalArgumentException.hpp"
 #include "Utils.hpp"
 #include "Config.hpp"
 
-ModeratorsService::ModeratorsService(ModeratorsRepository& repo):
+ModeratorsService::ModeratorsService(IUserManagement& repo):
 repository(repo)
 {}
 

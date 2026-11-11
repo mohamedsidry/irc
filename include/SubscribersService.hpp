@@ -4,17 +4,16 @@
 
 #include <string>
 class Subscriber; // Forward declaration
-class SubscribersRepository; // Forward declaration
-
+class IUserManagement; // Forward declaration
 
 class SubscribersService
 {
     private:
-        SubscribersRepository& repository;    
+        IUserManagement& repository;    
         SubscribersService(const SubscribersService& copy); // delete
         SubscribersService& operator=(const SubscribersService& other); // delete
     public:
-        SubscribersService(SubscribersRepository& repo);
+        SubscribersService(IUserManagement& repo);
 
         void addSubscriber(Subscriber *Subscriber);
         void removeSubscriber(const std::string& nickname);

@@ -45,22 +45,18 @@ void ModeratorsRepository::remove(const std::string& nickname)
 }
 
 
-void ModeratorsRepository::rename(
-    const std::string& oldNickName,
-    const std::string& newNickName)
+bool ModeratorsRepository::rename(const std::string& oldNickName, const std::string& newNickName)
 {
     ModeratorsRepository::iterator target = moderators.find(oldNickName);
-
-    if (target != moderators.end())
-    {
-        Moderator* moderator = target->second;
-
-        moderators.erase(target);
-
-        moderator->setNickName(newNickName);
-
-        moderators.insert(std::make_pair(newNickName, moderator));
-    }
+    if (oldNickName == newNickName)
+        return true;
+    if (target == moderators.end())
+        return false;
+    Moderator* moderator = target->second;
+    moderators.insert(std::make_pair(newNickName, moderator));
+    moderator->setNickName(newNickName);
+    moderators.erase(target);
+    return true;
 }
 
 bool ModeratorsRepository::has(const std::string& nickname) const

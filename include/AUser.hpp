@@ -2,8 +2,7 @@
 #define AUser_HPP
 
 #include <string>
-#include <cstddef>
-#include <iostream>
+#include <iosfwd>
 
 
 /**

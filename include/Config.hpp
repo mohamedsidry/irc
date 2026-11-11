@@ -11,7 +11,7 @@ class Config
         std::string password;
         
     public:
-        static const std::size_t USER_NICKNAME_LIMIT = 200;
+        static const std::size_t USER_NICKNAME_LIMIT = 9;
         static const std::size_t CHANNEL_TOPIC_LIMIT = 256;
         static const std::size_t DEFAULT_SUBSCRIBERS_LIMIT = 1024;
         static const std::string CHANNEL_DEFAULT_KEY;

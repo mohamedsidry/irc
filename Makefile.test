@@ -30,7 +30,7 @@ HPP =	include/AUser.hpp \
 		include/Config.hpp \
 		include/Exception.hpp \
 		include/IllegalArgumentException.hpp \
-		include/IUsersManagment.hpp \
+		include/IUserManagement.hpp \
 		include/main.hpp \
 		include/Moderator.hpp \
 		include/ModeratorsRepository.hpp \
@@ -40,7 +40,8 @@ HPP =	include/AUser.hpp \
 		include/SubscribersService.hpp \
 		include/Tester.hpp \
 		include/test.hpp \
-		include/Utils.hpp
+		include/Utils.hpp \
+		include/IUserFactory.hpp
 
 MAIN =	tests/main.cpp 
 
@@ -65,7 +66,8 @@ SRCS =	$(MAIN) \
 		srcs/server/services/ClientsService.cpp \
 		srcs/server/services/ModeratorsService.cpp \
 		srcs/server/services/SubscribersService.cpp \
-		tests/Tester.cpp
+		tests/Tester.cpp \
+		srcs/server/IUserFactory.cpp
 
 OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 
